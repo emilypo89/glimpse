@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+//var passport = require("./config/passport");
 
 // Require Click schema
 var Event = require("./models/event");
@@ -15,19 +15,19 @@ var app = express();
 var PORT = process.env.PORT || 3001;
 
 // Run Morgan for Logging
-app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+//app.use(logger("dev"));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.text());
+//app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("build"));
 
 
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+//app.use(passport.initialize());
+//app.use(passport.session());
 // -------------------------------------------------
 
 // MongoDB configuration (Change this URL to your own DB)
