@@ -4,7 +4,22 @@ import { Route, Link} from 'react-router-dom'
 import Calendar from './containers/calendar.js'
 
 class Main extends Component {
+	constructor(){
+		super()
+		this.state = {
+			show: true
+		}
+	}
 	render(){
+		
+		var displayButton;
+		 if (this.state.show === true) {
+			displayButton = (<button>
+		 		<Link to="/calendar">This is a Button</Link>
+		 	</button>)
+		 } else {
+		 	displayButton = null
+		 }
 		return (
 			<div className="Main">
 					<nav className="navbar navbar-inverse">
@@ -30,15 +45,19 @@ class Main extends Component {
 			            </div>
 			          </div>
 			        </nav>
-				<button>
+			        {displayButton}
+{/*				<button>
 				<Link to="/calendar">This is a Button</Link>
-				</button>
+				</button> */}
+				<h1>CALENDAR:</h1>
+				<Route exact path="/calendar" component={Calendar} />
 
 				<footer className="container-fluid text-center">
           			<p>Footer Text</p>
         		</footer>
 			
-				<Route exact path="/calendar" component={Calendar} />
+				
+
 			
 				
 			</div>
