@@ -5,9 +5,7 @@ import { Route, Link } from 'react-router-dom'
 class Calendar extends Component {
 	render(){
 		return(
-      <div className="container">
-			
-          
+      <div className="container" id="calContainer">    
         <div className="container-fluid text-center">    
           <div className="row content">
             <div className="col-sm-2 sidenav">
@@ -17,8 +15,12 @@ class Calendar extends Component {
             </div>
             <div className="col-lg-8 text-left"> 
               
-              <div className="calendar"></div>
+
                 
+            <div className="calendar">
+              
+              </div>
+
 
             </div>
             <div className="col-sm-2 sidenav">
