@@ -3,6 +3,11 @@
       margin-bottom: 0;
       border-radius: 0;
     }
+
+    h1 {
+      font-family: 'Just Another Hand', cursive;
+      font-size: 80px;
+    }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 450px}
