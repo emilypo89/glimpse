@@ -16,8 +16,14 @@ class Calendar extends Component {
             <div className="col-lg-8 text-left"> 
               
 
+
                 
-            <div className="calendar">
+ 
+             
+                
+
+              <div className="calendar">
+
               
               </div>
 
