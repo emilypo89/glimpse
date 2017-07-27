@@ -21,7 +21,7 @@ render(){
 
 
 return (
-<div className="Main">
+<div className="Main" id="main">
 	<div className="row" id="navBarRow">
 		<nav className="navbar navbar-inverse">
 			<div className="container-fluid">
@@ -61,7 +61,7 @@ return (
 		
 		<Route exact path="/calendar" component={Calendar} />
 		<footer className="container-fluid text-center" id="footer">
-			<p>Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
+			<p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
 		</footer>
 		
 		

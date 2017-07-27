@@ -1,9 +1,13 @@
+html{
+    position: relative;
+    min-height: 100%;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
 }
-
 
 
 .navbar-brand {
@@ -45,14 +49,37 @@ body {
     border-color: #FF6B6B;
 }
 
-#footer{
+/*#footer{
+
     background-color: #292F36;
     color: #F7FFF7;
     padding: 15px;
+}*/
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px; 
+  
+}
+
+#main{
+    min-height: 100%;
+    margin-bottom: 90px;
+}
+
+#root{
+    margin-bottom: 60px;
 }
 
 #navBarRow {
     padding: 10px;
     background-color: #FF6B6B;
+}
+
+#footerP{
+    margin: -15px;
 }
 
