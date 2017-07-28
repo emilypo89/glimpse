@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import './calendar.css'
+import './group.css'
 import { Route, Link } from 'react-router-dom'
+import Calendar from './calendar'
 
-class Calendar extends Component {
+const divStyle = {
+  height: 600
+}
+
+class Group extends Component {
 	render(){
 		return(
       <div className="container" id="calContainer">    
@@ -22,9 +27,9 @@ class Calendar extends Component {
              
                 
 
-              <div className="calendar">
+              <div className="calendar" style={divStyle}>
 
-              
+              <Calendar />
               </div>
 
 
@@ -46,4 +51,4 @@ class Calendar extends Component {
 		
 }
 
-export default Calendar;
+export default Group;

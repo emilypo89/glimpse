@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
 import Calendar from './components/calendar'
+import Group from './components/group'
 
 const divStyle = {
 	height: 600
@@ -135,7 +136,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
-				<Route exact path="/calendar" render={() => <Calendar/>} />
+				<Route exact path="/group" render={() => <Group/>} />
 			</div>
 		)
 	}
