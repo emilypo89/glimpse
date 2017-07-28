@@ -10,6 +10,10 @@ body {
     background-color: #01abaa;
 }
 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
 
 .navbar-brand {
 
@@ -58,6 +62,8 @@ body {
 }*/
 
 #footer {
+  color: white;
+  padding: 15px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -87,13 +93,5 @@ body {
 #footerP{
     margin: -15px;
     background-color: black;
-}
-.sidenav {
-    padding-top: 20px;
-    background-color: #fea680 !important;
-    height: 100%;
-    border: .5px solid #292F36;
-    border-radius: 15px;
-
 }
 
