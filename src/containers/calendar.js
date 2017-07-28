@@ -9,9 +9,9 @@ class Calendar extends Component {
         <div className="container-fluid text-center">    
           <div className="row content">
             <div className="col-sm-2 sidenav">
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
-              <p><a href="#">Link</a></p>
+              <p>User 1</p>
+              <p>User 2</p>
+              <p>User 3</p>
             </div>
             <div className="col-lg-8 text-left"> 
               
@@ -31,10 +31,10 @@ class Calendar extends Component {
             </div>
             <div className="col-sm-2 sidenav">
               <div className="well">
-                <p>ADS</p>
+                <p>POLL #1</p>
               </div>
               <div className="well">
-                <p>ADS</p>
+                <p>POLL #2</p>
               </div>
             </div>
           </div>
