@@ -15,9 +15,14 @@ class Calendar extends Component {
             </div>
             <div className="col-lg-8 text-left"> 
               
+
+             
+                
+
               <div className="calendar">
               
               </div>
+
 
             </div>
             <div className="col-sm-2 sidenav">
