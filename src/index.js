@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import Main from './main';
+import Dashboard from './dashboard';
 import './index.css';
 
 ReactDOM.render(
 	<BrowserRouter>
-	<Main />
+	<Dashboard />
 		
 	</BrowserRouter>, document.getElementById("root"));

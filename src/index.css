@@ -95,3 +95,27 @@ body {
     background-color: black;
 }
 
+.thumbnail{
+  background-color: red;
+}
+
+#calendarRow{
+  padding-bottom: 3.5%;
+}
+
+i{
+  display: inline;
+  padding-left: 4%;  
+  padding-right: 10px;
+}
+
+#calendars{
+  display: inline;
+  font-family: 'Just Another Hand', cursive;
+}
+
+.panel{
+  margin-left: 20%;
+  background-color: #fea680;
+  height: 150px;
+}
