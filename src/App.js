@@ -6,6 +6,11 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import Home from './components/Home'
+import Calendar from './components/calendar'
+
+const divStyle = {
+	height: 600
+}
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -112,9 +117,10 @@ class App extends Component {
 			})
 	}
 
+
 	render() {
 		return (
-			<div className="App">
+			<div className="App" style={divStyle}>
 				<h1>This is the main App component</h1>
 				<Header user={this.state.user} />
 				{/* LINKS to our different 'pages' */}
@@ -129,6 +135,7 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
+				<Route exact path="/calendar" render={() => <Calendar/>} />
 			</div>
 		)
 	}

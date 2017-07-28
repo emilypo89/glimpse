@@ -4,8 +4,12 @@ import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
+const divStyle = {
+	height: 600
+}
+
 ReactDOM.render(
-	<BrowserRouter>
+	<BrowserRouter style={divStyle}>
 		<App />
 	</BrowserRouter>,
 	document.getElementById('root')
