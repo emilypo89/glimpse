@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "mongoose": "^4.11.4",
+    "morgan": "^1.8.2",
+    "passport": "^0.3.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10"
   },
   "scripts": {
@@ -14,5 +19,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy":"http://localhost:3001"
+  "proxy": "http://localhost:3001"
 }
