@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Link } from 'react-router-dom';
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
+import './landing.css'
 
 export default class Landing extends Component {
   constructor() {
@@ -25,12 +26,14 @@ export default class Landing extends Component {
     console.log(this.state.password);
   }
   handleSubmit(event) {
-    event.preventDefault()
+    console.log("made it to handle submit")
     // TODO - validate!
     axios
       .post('/auth/signup', {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.password,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName
       })
       .then(response => {
         console.log(response)
