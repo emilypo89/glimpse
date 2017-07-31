@@ -26,8 +26,10 @@ class SignupForm extends Component {
 		// TODO - validate!
 		axios
 			.post('/auth/signup', {
+				firstName: this.state.firstName,
+				lastName: this.state.lastName,
 				email: this.state.email,
-				password: this.state.password
+				password: this.state.password,
 			})
 			.then(response => {
 				console.log(response)

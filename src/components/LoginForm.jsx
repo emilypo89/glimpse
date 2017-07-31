@@ -30,7 +30,7 @@ class LoginForm extends Component {
 		// })
 		// redirect - will clean form
 		this.setState({
-			redirectTo: '/'
+			redirectTo: '/group'
 		})
 		// axios
 		// 	.post('/auth/login', {
