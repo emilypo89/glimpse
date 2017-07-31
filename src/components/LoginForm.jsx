@@ -30,7 +30,7 @@ class LoginForm extends Component {
 		// })
 		// redirect - will clean form
 		this.setState({
-			redirectTo: '/'
+			redirectTo: '/group'
 		})
 		// axios
 		// 	.post('/auth/login', {
@@ -50,24 +50,24 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div className="LoginForm">
-					<h1>Login form</h1>
-					<label htmlFor="email">Email: </label>
-					<input
-						type="text"
-						name="email"
-						value={this.state.email}
-						onChange={this.handleChange}
-					/>
-					<label htmlFor="password">Password: </label>
-					<input
-						type="password"
-						name="password"
-						value={this.state.password}
-						onChange={this.handleChange}
-					/>
-					<button onClick={this.handleSubmit}>Login</button>
-				</div>
+				<div className="panel panel-default">
+  			<div className="panel-heading">
+   			 <h4 className="panel-title">login</h4>
+  			</div>
+	  		<div className="panel-body">
+	     		<form>
+	          <div className="form-group">
+	            <label for="email">Email Address:</label>
+	            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+	          </div>
+	          <div className="form-group">
+	            <label for="password">Password:</label>
+	            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+	          </div>
+          </form>
+			    <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
+	  		</div>
+			</div>
 			)
 		}
 	}

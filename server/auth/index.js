@@ -28,9 +28,9 @@ router.post('/logout', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-	const { email, password } = req.body
+	const { email, password, firstName, lastName } = req.body
 	// ADD VALIDATION
-	const newUser = new User({ email, password })
+	const newUser = new User({ email, password, firstName, lastName })
 	newUser.save((err, savedUser) => {
 		if (err) return res.json(err)
 		return res.json(savedUser)

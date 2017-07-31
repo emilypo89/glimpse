@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Calendar from './components/calendar'
 import Group from './components/group'
+import Landing from './components/landing'
 
 const divStyle = {
 	height: 600
@@ -122,13 +123,13 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App" style={divStyle}>
-				<h1>This is the main App component</h1>
+				{/*<h1>This is the main App component</h1>*/}
 				<Header user={this.state.user} />
 				{/* LINKS to our different 'pages' */}
-				<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
+				{/*<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}  />*/}
 				{/*  ROUTES */}
 				{/* <Route exact path="/" component={Home} /> */}
-				<Route exact path="/" render={() => <Home user={this.state.user} />} />
+				{/*<Route exact path="/" render={() => <Home user={this.state.user} />} />*/}
 				<Route
 					exact
 					path="/login"
@@ -137,6 +138,7 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
 				<Route exact path="/group" render={() => <Group/>} />
+				<Route exact path="/" render={() => <Landing />} />
 			</div>
 		)
 	}
