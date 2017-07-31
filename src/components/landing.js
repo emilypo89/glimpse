@@ -30,8 +30,8 @@ export default class Landing extends Component {
                       <h1>glimpse</h1>
                       <h3>A unique shared calendar app for all the groups in your life.</h3>
                     </hgroup>
-                    <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-                    <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#signUpModal">sign up</button>
+                    <button type="button" className="btn btn-hero btn-lg"><Link to="/login">login</Link></button>
+                    <button type="button" className="btn btn-hero btn-lg"><Link to="/signup">signup</Link></button>
                   </div>
               </div>
               <div className="item slides">
@@ -41,8 +41,8 @@ export default class Landing extends Component {
                     <h1>glimpse</h1>
                     <h3>find out how glimpse makes organizing easier</h3>
                   </hgroup>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#signUpModal">sign up</button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/login">login</Link></button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/signup">signup</Link></button>
                 </div>
               </div>
               <div className="item slides">
@@ -52,8 +52,8 @@ export default class Landing extends Component {
                     <h1>glimpse</h1>
                     <h3>start now and create a shared calendar for everyone</h3>
                   </hgroup>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#signUpModal">sign up</button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/login">login</Link></button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/signup">signup</Link></button>
                 </div>
               </div>
               <div className="item slides">
@@ -63,8 +63,8 @@ export default class Landing extends Component {
                     <h1>glimpse</h1>
                     <h3>join other shared calendars and begin planning your next adventure</h3>
                   </hgroup>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#signUpModal">sign up</button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/login">login</Link></button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/signup">signup</Link></button>
                 </div>
               </div>
               <div className="item slides">
@@ -74,8 +74,8 @@ export default class Landing extends Component {
                     <h1>glimpse</h1>
                     <h3>get started today</h3>
                   </hgroup>
-                  <button type="button" className="btn btn-hero btn-lg" link="/login">login</button>
-                  <button type="button" className="btn btn-hero btn-lg" link="/signup">sign up</button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/login">login</Link></button>
+                  <button type="button" className="btn btn-hero btn-lg"><Link to="/signup">signup</Link></button>
                 </div>
               </div>
             </div>
