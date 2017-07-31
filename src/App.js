@@ -138,7 +138,7 @@ class App extends Component {
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
 				<Route exact path="/group" render={() => <Group/>} />
-				<Route exact path="/" render={() => <Landing _login={this._login} />} />
+				<Route exact path="/" render={() => <Landing />} />
 			</div>
 		)
 	}

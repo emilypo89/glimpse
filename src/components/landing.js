@@ -2,87 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter, Link } from 'react-router-dom';
 import axios from "axios";
 import { Redirect } from 'react-router-dom';
+import './landing.css';
 
 export default class Landing extends Component {
-  constructor() {
-    super()
-    this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      redirectTo: null
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-    console.log(this.state.email);
-    console.log(this.state.password);
-  }
-  handleSubmit(event) {
-    event.preventDefault()
-    // TODO - validate!
-    axios
-      .post('/auth/signup', {
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(response => {
-        console.log(response)
-        if (!response.data.errmsg) {
-          console.log('youre good')
-          this.setState({
-            redirectTo: '/'
-          })
-        } else {
-          console.log('duplicate')
-        }
-      })
-  }
-
-  // loginHandleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-  loginHandleSubmit(event) {
-    event.preventDefault()
-    console.log('handleSubmit')
-    this.state._login(this.state.email, this.state.password)
-    // clean up the form
-    // this.setState({
-    //  email: '',
-    //  password: ''
-    // })
-    // redirect - will clean form
-    this.setState({
-      redirectTo: '/'
-    })
-    // axios
-    //  .post('/auth/login', {
-    //    email: this.state.email,
-    //    password: this.state.password
-    //  })
-    //  .then(response => {
-    //    if (response.status === 200) {
-    //      // update the state
-    //    }
-    //    console.log(response)
-    //  })
-  }
-
-
-
   render() {
-    if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />
-    }
     return (
       <div>
         <div className="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
@@ -151,87 +74,13 @@ export default class Landing extends Component {
                     <h1>glimpse</h1>
                     <h3>get started today</h3>
                   </hgroup>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#loginModal">login</button>
-                  <button type="button" className="btn btn-hero btn-lg" data-toggle="modal" data-target="#signUpModal">sign up</button>
+                  <button type="button" className="btn btn-hero btn-lg" link="/login">login</button>
+                  <button type="button" className="btn btn-hero btn-lg" link="/signup">sign up</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-          {/*<!-- MODAL FOR SIGN UP -->*/}
-          <div className="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 className="modal-title" id="myModalLabel">Sign Up</h4>
-                </div>
-                <div className="modal-body">
-                  <form>
-                    <div className="form-group">
-                      <label for="firstName">First Name:</label>
-                      <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}  />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label for="lastName">Last Name:</label>
-                      <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}  />
-                    </div>
-
-                    <div className="form-group">
-                      <label for="email">Email Address:</label>
-                      <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-                    </div>
-                    
-                    <div className="form-group">
-                      <label for="password">Password:</label>
-                      <input type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
-                    </div>
-                    <div className="form-group">
-                      <label for="confirmPassword">Confirm Password:</label>
-                      <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
-                    </div>
-                  </form>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/*<!-- MODAL FOR LOG IN -->*/}
-          <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal">
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 className="modal-title" id="myModalLabel">Login</h4>
-                </div>
-                <div className="modal-body">
-                  <form>
-                    <div className="form-group">
-                      <label for="email">Email Address:</label>
-                      <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-                    </div>
-                    <div className="form-group">
-                      <label for="password">Password:</label>
-                      <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </div>
-                  </form>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary" onClick={this.loginHandleSubmit}>Login</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
           {/*<!--SECTION FOR DESCRIPTION OF APP  -->*/}
           <section className="about-sec parallax-section" id="about">
             <div className="container">

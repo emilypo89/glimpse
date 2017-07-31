@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Landing from './components/views/landing'
+import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
 	<BrowserRouter >
-		<Landing />
+		<App />
 	</BrowserRouter>,
 	document.getElementById('root')
 )
