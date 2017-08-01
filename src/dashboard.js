@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css'
 import { Route, Link} from 'react-router-dom'
 import Calendar from './containers/calendar.js'
-class Main extends Component {
+class Dashboard extends Component {
 
 // constructor(){
 // 	super()
@@ -54,10 +54,28 @@ return (
 				</div>
 			</nav>
 		</div>
+		<br />
 		
-		<button>
-		<Link to="/calendar">This is a Button</Link>
-		</button>
+		<div className="container-fluid text-left"> 
+			<div className="row-inline content" id="calendarRow">
+				<div className="col-lg-12">
+					<i className="inline fa fa-calendar fa-2x" aria-hidden="true"></i><h1 className="inline" id="calendars">Your Calendars</h1> 
+				</div>
+			</div>
+
+			<div className="row content">
+				<div className="col-sm-3">
+					<Link to="/calendar">
+						<div className="panel panel-default">
+							<div className="panel-body">
+							</div>
+						</div>
+					</Link>
+				</div>
+			</div>
+		</div>
+			
+
 		
 		<Route exact path="/calendar" component={Calendar} />
 		<footer className="container-fluid text-center" id="footer">
@@ -71,4 +89,4 @@ return (
 	)
 	}
 	}
-	export default Main;
+	export default Dashboard;
