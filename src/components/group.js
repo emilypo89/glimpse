@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import './group.css'
-import { Route, Link } from 'react-router-dom'
-import Calendar from './calendar'
+import React, { Component } from 'react';
+import './group.css';
+import { Route, Link } from 'react-router-dom';
+import Calendar from './calendar';
 
 const divStyle = {
   height: 600
