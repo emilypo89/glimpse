@@ -14,7 +14,23 @@ router.get('/user', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-	res.json({ user: { email: req.user.email, _id: req.user._id, groups: req.user.groups } })
+	// req.user
+	// make a query & populate group to mongo based off of req.user, in the callback
+		// send back the response
+	User.find({_id: req.user._id}).populate("groups").exec(function(err, doc) {
+		if (err) {
+			res.send(err);
+		}
+		else {
+			console.log("this is the response doc")
+			console.log(doc);
+			console.log("user's groups");
+			console.log(doc[0].groups[0]);
+			// res.send(doc);
+			res.json({ user: { email: doc[0].email, _id: doc[0]._id, groups: doc[0].groups } })
+		}
+	})
+
 });
 
 router.post('/logout', (req, res) => {

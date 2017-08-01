@@ -120,7 +120,6 @@ class App extends Component {
 						user: response.data.user,
 						userID: response.data.user._id,
 						groups: response.data.user.groups
-
 					})
 				}
 			})

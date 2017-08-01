@@ -71,7 +71,7 @@ return (
 						<Link to="/calendar">
 							<div className="panel panel-default">
 								<div className="panel-body" key={index}>
-									{group}
+									{group.groupName}
 								</div>
 							</div>
 						</Link>
