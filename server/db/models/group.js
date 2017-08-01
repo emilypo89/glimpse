@@ -1,16 +1,12 @@
 // Include the Mongoose Dependencies
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Create a Schema for capturing clicks. We'll use clickID to update the same clickCounter
-var GroupSchema = new Schema({
-  groupName: {
-    type: String
-  },
-  groupDescription: {
-    type: String
-  },
+const GroupSchema = new Schema({
+  groupName: {type: String},
+  groupDescription: {type: String},
   events: [{
   	title: String,
   	start: String,
@@ -20,7 +16,7 @@ var GroupSchema = new Schema({
 });
 
 // Create the Model
-var Group = mongoose.model("Group", GroupSchema);
+const Group = mongoose.model("Group", GroupSchema);
 
 // Export it for use elsewhere
 module.exports = Group;

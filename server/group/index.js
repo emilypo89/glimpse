@@ -35,8 +35,8 @@ router.post("/event/:id", function(req, res) {
 
 // route to create a new group
 router.post("/group", function(req, res) {
-	console.log("Made it to the group post route!")
-	console.log(req.body)
+	console.log("Made it to the group post route!");
+	console.log(req.body);
 	var newGroup = new Group(req.body);
 
 	newGroup.save(function(err, doc) {

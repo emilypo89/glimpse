@@ -9,6 +9,7 @@ import Home from './components/Home'
 import Calendar from './components/calendar'
 import Group from './components/group'
 import Landing from './components/landing'
+import Dashboard from './components/dashboard'
 
 const divStyle = {
 	height: 600
@@ -62,7 +63,9 @@ class App extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			userID: "",
+			groups: []
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
@@ -108,12 +111,16 @@ class App extends Component {
 				password
 			})
 			.then(response => {
+				console.log("login response");
 				console.log(response)
 				if (response.status === 200) {
 					// update the state
 					this.setState({
 						loggedIn: true,
-						user: response.data.user
+						user: response.data.user,
+						userID: response.data.user._id,
+						groups: response.data.user.groups
+
 					})
 				}
 			})
@@ -137,8 +144,9 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
-				<Route exact path="/group" render={() => <Group/>} />
+				<Route exact path="/group" render={() => <Group userID={this.state.userID} />} />
 				<Route exact path="/" render={() => <Landing />} />
+				<Route exact path="/dashboard" render={() => <Dashboard userID={this.state.userID} groups={this.state.groups} _logout={this._logout} />} />
 			</div>
 		)
 	}

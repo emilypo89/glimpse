@@ -3,7 +3,7 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 
-import helpers from '../utils/helpers'
+import helpers from '../utils/helpers';
 
 BigCalendar.momentLocalizer(moment);
 
@@ -22,12 +22,11 @@ class Calendar extends React.Component {
 	} // ends constructor
 
 	componentDidMount() {
-		console.log("Made it to CDM")
+		console.log("Made it to CDM");
 		helpers.getEvents()
 			.then(response => {
-				// debugger
-				console.log("made it to response")
-				console.log(response.data)
+				console.log("made it to response");
+				console.log(response.data);
 				
 				let eventsArray = response.data.events;
 
@@ -42,10 +41,7 @@ class Calendar extends React.Component {
 						end: endDate,
 						start: startDate,
 						title: event.title
-
 					}
-								// debugger
-					// console.log(newEventObject.end instanceof Date)
 
 					console.log("New Object")
 					console.log(newEventObject)

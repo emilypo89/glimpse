@@ -11,11 +11,11 @@ router.get('/user', (req, res, next) => {
 	} else {
 		return res.json({ user: null })
 	}
-})
+});
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-	res.json({ user: { email: req.user.email, _id: req.user._id } })
-})
+	res.json({ user: { email: req.user.email, _id: req.user._id, groups: req.user.groups } })
+});
 
 router.post('/logout', (req, res) => {
 	if (req.user) {
@@ -25,7 +25,7 @@ router.post('/logout', (req, res) => {
 	} else {
 		return res.json({ msg: 'no user to log out!' })
 	}
-})
+});
 
 router.post('/signup', (req, res) => {
 	const { email, password, firstName, lastName } = req.body
@@ -35,6 +35,22 @@ router.post('/signup', (req, res) => {
 		if (err) return res.json(err)
 		return res.json(savedUser)
 	})
-})
+});
 
-module.exports = router
+router.post('/addGroup', (req, res) => {
+	console.log("add group req body");
+	console.log(req.body);
+	User.findOneAndUpdate({_id: req.body.userID}, 
+	{
+		$push: {groups: req.body.groups}
+	}, function(err, doc) {
+		if (err){
+			console.log(err);
+		}
+		else {
+			res.send(doc);
+		}
+	});
+});
+
+module.exports = router;
