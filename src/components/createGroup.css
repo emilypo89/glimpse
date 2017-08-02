@@ -1,0 +1,29 @@
+#groupPanel{
+	background-color: white;
+	max-height: auto;
+	align-content: center;
+	padding-left: 10px;
+	padding-right:10px;
+}
+
+#createGroupTitle{
+	font-family: 'Just Another Hand', cursive;
+	font-size: 34px;
+}
+
+#createGroupButton{
+  color: #f5f5f5;
+  background-color: #01ABAA;
+  border-color: #1abc9c;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.groupText{
+	padding-right: 70px !important;
+    padding-left: 70px !important;
+    padding-bottom: 20px !important;
+}
+
+#groupHeading{
+  background-color: #01abaa;
+}

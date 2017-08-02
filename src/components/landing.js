@@ -7,7 +7,7 @@ import './landing.css';
 export default class Landing extends Component {
   render() {
     return (
-      <div id="main">
+      <div id="mainLanding">
         <div className="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
           <div id="slider-top" className="carousel slide col-lg-12" data-ride="carousel">
             {/*<!-- Overlay --> */}
@@ -187,8 +187,8 @@ export default class Landing extends Component {
               
           {/*<!-- FOOTER -->*/}
           
-          <div className="row" id="footer">
-            <p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
+          <div className="row" id="footerLanding">
+            <p id="footerPLanding">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
           </div>
           
       </div>

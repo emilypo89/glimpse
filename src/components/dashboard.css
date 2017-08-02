@@ -50,9 +50,9 @@ body {
     border-color: #fedc3d;
 }
 
-#main{
+.mainDashboard{
     min-height: 100%;
-    margin-bottom: 90px;
+    margin-bottom:0px;
 }    
 
 #root{
@@ -105,9 +105,50 @@ i{
   color: white;
 }
 
-.panel{
+#groupNameBox{
   margin-left: 20%;
-  background-color: #fea680;
+  background-color: rgba(254,166,128,.8);
   height: 150px;
+  border-radius: 15px;
 }
+
+#groupButton, #logOutButton{
+  font-family: 'Roboto', sans-serif;
+  background-color: #FEDC3D;
+  border-color: #FEDC3D;
+  color: black !important;
+  margin-top: 6px;
+
+}
+
+
+#groupButton:hover{
+  color: white;
+}
+
+#logOutButton:hover{
+  color: white;
+}
+
+#peaches {
+  margin-right: 60px;
+}
+
+#footerDashboard{
+  padding-top: 25px !important;
+  max-width: 100% !important;
+  line-height: 60px !important;
+  color: #FEDC3D !important;
+}
+
+#footerPDashboard{
+  text-align: center;
+  font-family: 'Roboto', sans-serif !important;
+  margin: -15px !important;
+  background-color: black !important;
+}
+
+
+
+
 

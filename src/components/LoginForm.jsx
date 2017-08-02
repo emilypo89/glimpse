@@ -51,27 +51,27 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div className="row">
+				<div className="row" id="loginRow">
 					<div className="col-lg-4"></div>
 					<div className="col-lg-4">
 						<div className="panel panel-default">
-		  				<div className="panel-heading">
-		   					<h4 className="panel-title">login</h4>
+		  				<div className="panel-heading" id="loginHeading">
+		   					<h4 className="panel-title text-center" id="loginPanel">login</h4>
 		  				</div>
-			  			<div className="panel-body">
+			  			<div className="panel-body" id="panelBody">
 			     			<form>
-			          	<div className="form-group">
+			          	<div className="form-group text-center">
 			            	<label for="email">email address:</label>
 			            	<br />
 			            	<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 			          	</div>
-			          	<div className="form-group">
+			          	<div className="form-group text-center">
 			            	<label for="password">password:</label>
 			            	<br />
 			            	<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
 			          	</div>
 		          	</form>
-					    	<button type="button" className="btn btn-primary actionButton" onClick={this.handleSubmit}>login</button>
+					    	<button type="button" className="btn btn-primary actionButton center-block" onClick={this.handleSubmit}>login</button>
 			  			</div>
 						</div>
 					</div>

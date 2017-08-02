@@ -301,23 +301,24 @@ blockquote .small, blockquote footer, blockquote small {
     text-transform: lowercase;
 }
 
-#main{
+#mainLanding{
   margin-bottom: 0;
   min-height: 100%;
   background-color: #01ABAA;
 }
 
-#footer{
-  padding-top: 25px;
-  max-width: 100%;
-  line-height: 60px;
-  color: #FEDC3D;
+#footerLanding{
+  padding-top: 25px !important;
+  max-width: 100% !important;
+  line-height: 60px !important;
+  color: #FEDC3D !important;
 }
 
-#footerP{
-  font-family: 'Roboto', sans-serif;
-  margin: -15px;
-  background-color: black;
+#footerPLanding{
+  text-align: center;
+  font-family: 'Roboto', sans-serif !important;
+  margin: -15px !important;
+  background-color: black !important;
 }
 /********************************/
 /*          Media Queries       */
