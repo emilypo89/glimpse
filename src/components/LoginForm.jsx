@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import './login_signup.css';
 
 class LoginForm extends Component {
 	constructor() {
@@ -50,24 +51,32 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<div className="panel panel-default">
-  			<div className="panel-heading">
-   			 <h4 className="panel-title">login</h4>
-  			</div>
-	  		<div className="panel-body">
-	     		<form>
-	          <div className="form-group">
-	            <label for="email">Email Address:</label>
-	            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-	          </div>
-	          <div className="form-group">
-	            <label for="password">Password:</label>
-	            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-	          </div>
-          </form>
-			    <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-	  		</div>
-			</div>
+				<div className="row">
+					<div className="col-lg-4"></div>
+					<div className="col-lg-4">
+						<div className="panel panel-default">
+		  				<div className="panel-heading">
+		   					<h4 className="panel-title">login</h4>
+		  				</div>
+			  			<div className="panel-body">
+			     			<form>
+			          	<div className="form-group">
+			            	<label for="email">email address:</label>
+			            	<br />
+			            	<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+			          	</div>
+			          	<div className="form-group">
+			            	<label for="password">password:</label>
+			            	<br />
+			            	<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+			          	</div>
+		          	</form>
+					    	<button type="button" className="btn btn-primary actionButton" onClick={this.handleSubmit}>login</button>
+			  			</div>
+						</div>
+					</div>
+					<div className="col-lg-4"></div>
+				</div>
 			)
 		}
 	}
