@@ -7,6 +7,24 @@ import helpers from '../utils/helpers';
 
 BigCalendar.momentLocalizer(moment);
 
+	function Event ( {event} ) {
+		return (
+			<span>
+			<strong>
+			{event.title}
+			</strong>
+			{ event.desc && (': ' + event.desc)}
+			</span>
+			)
+	}
+
+	function EventAgenda({event}) {
+		return <span>
+		<em>{event.title}</em>
+		<p>{event.desc}</p>
+		</span>
+	}
+
 let allViews = Object.keys(BigCalendar.views).map(k => BigCalendar.views[k])
 
 class Calendar extends React.Component {
@@ -23,7 +41,7 @@ class Calendar extends React.Component {
 
 	componentDidMount() {
 		console.log("Made it to CDM");
-		helpers.getEvents()
+		helpers.getEvents(this.props.currentGroup)
 			.then(response => {
 				console.log("made it to response");
 				console.log(response.data);
@@ -32,7 +50,8 @@ class Calendar extends React.Component {
 
 				let newStateArray =[];
 
-				eventsArray.forEach(event => {
+				eventsArray.forEach((event, index) => {
+					console.log("index: " + index)
 					console.log("the Event")
 					console.log(event)
 					var endDate = new Date(event.end)
@@ -40,7 +59,8 @@ class Calendar extends React.Component {
 					var newEventObject = {
 						end: endDate,
 						start: startDate,
-						title: event.title
+						title: event.title,
+						desc: event.desc
 					}
 
 					console.log("New Object")
@@ -86,6 +106,12 @@ class Calendar extends React.Component {
 				popup
 				events={this.state.events}
 				views={allViews}
+				components={{
+					event: Event,
+					agenda: {
+						event: EventAgenda
+					} 
+				}}
 				// startAccessor='startDate'
       	// endAccessor='endDate'
 				// defaultDate={new Date(2017, 3, 1)}

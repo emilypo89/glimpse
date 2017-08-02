@@ -22,7 +22,7 @@ class CreateGroup extends Component {
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
-		})
+		});
 	}
 
 
@@ -68,7 +68,7 @@ class CreateGroup extends Component {
 			console.log("getUserGroups response");
 			console.log(response);
 			this.props.refreshGroup(response.data.groups);
-		})
+		});
 	}
 
 	render(){

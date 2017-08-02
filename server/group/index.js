@@ -5,13 +5,15 @@ const Group = require('../db/models/group');
 
 // route to group document
 router.get("/api/:id", function(req, res) {
+	console.log("made it to api/:id")
 	Group.findOne({_id: req.params.id}).exec(function(err, doc) {
 		if (err) {
-			console.log(err)
+			console.log(err);
 		}
 		else {
-			console.log(doc)
-			res.send(doc)
+			console.log("docs from findOne group on server")
+			console.log(doc);
+			res.send(doc);
 		}
 	});
 });

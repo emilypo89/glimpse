@@ -25,6 +25,7 @@ class Dashboard extends Component {
 	}
 
 
+
 render(){
 	let groupForm = null;
 		if(this.state.createGroup == true) {
@@ -66,16 +67,19 @@ return (
 					</div>
 				</div>
 				<div className="row content">
-				{this.props.groups.map((group, index) => 
+				{this.props.groups.map((group, index) => {
+					let route = `/group/${group._id}`;
+					return(
 					<div className="col-sm-3">
-						<Link to="/calendar">
+						<Link to={route}>
 							<div className="panel panel-default">
 								<div className="panel-body" key={index}>
 									{group.groupName}
+									{/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
 								</div>
 							</div>
 						</Link>
-					</div>)}
+					</div>);})}
 				</div>
 			</div>
 	<br/>
@@ -94,7 +98,7 @@ return (
 	
 	
 </div>
-);
+)
 }
 }
 	export default Dashboard;

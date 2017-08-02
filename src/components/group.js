@@ -8,7 +8,16 @@ const divStyle = {
 }
 
 class Group extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount() {
+    console.log(this.props.match.params.id);
+  }
+
 	render(){
+    // console.log(this.props.match.params.id);
 		return(
       <div className="main" id="mainCal">
         <div className="row" id="navBarRow">
@@ -30,7 +39,7 @@ class Group extends Component {
                       <button type="submit" className="btn btn-default">Find</button>
                     </form>
                   </li>
-                  <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                  <li><a onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
               </div>
             </div>
@@ -44,7 +53,9 @@ class Group extends Component {
                 <div className="col-sm-1"></div>
                 <div className="col-lg-8 text-left" id="calBackground"> 
                   <div className="calendar" style={divStyle}>
-                    <Calendar />
+
+                    <Calendar currentGroup={this.props.match.params.id}/>
+
                   </div>
                 </div>
                 <div className="col-sm-2 sidenav">

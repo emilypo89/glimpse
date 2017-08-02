@@ -78,12 +78,12 @@ router.post('/api/user', (req, res) => {
 			res.send(err);
 		}
 		else {
-			console.log("this is the response doc")
+			console.log("this is the response doc");
 			console.log(doc);
 			console.log("user's groups");
 			console.log(doc[0].groups[0]);
 			// res.send(doc);
-			res.json({ groups: doc[0].groups })
+			res.json({ groups: doc[0].groups });
 		}
 	})
 
