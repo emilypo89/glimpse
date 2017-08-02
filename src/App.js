@@ -69,6 +69,7 @@ class App extends Component {
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
+		this.refreshGroup = this.refreshGroup.bind(this)
 	}
 
 	componentDidMount() {
@@ -125,10 +126,17 @@ class App extends Component {
 			})
 	}
 
+	refreshGroup (group) {
+		this.setState({
+			groups: group
+		})
+	}
+
 
 	render() {
 		return (
 			<div className="App" style={divStyle}>
+			<button onClick={this.refreshGroup}>refresh</button>
 				{/*<h1>This is the main App component</h1>*/}
 				{/*<Header user={this.state.user} />*/}
 				{/* LINKS to our different 'pages' */}
@@ -145,7 +153,7 @@ class App extends Component {
 				{/* <LoginForm _login={this._login} /> */}
 				<Route exact path="/group" render={() => <Group userID={this.state.userID} />} />
 				<Route exact path="/" render={() => <Landing />} />
-				<Route exact path="/dashboard" render={() => <Dashboard userID={this.state.userID} groups={this.state.groups} _logout={this._logout} />} />
+				<Route exact path="/dashboard" render={() => <Dashboard userID={this.state.userID} groups={this.state.groups} _logout={this._logout} refreshGroup={this.refreshGroup}/>}  />
 			</div>
 		)
 	}

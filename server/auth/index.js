@@ -69,4 +69,24 @@ router.post('/addGroup', (req, res) => {
 	});
 });
 
+router.post('/api/user', (req, res) => {
+	// req.user
+	// make a query & populate group to mongo based off of req.user, in the callback
+		// send back the response
+	User.find({_id: req.body.userID}).populate("groups").exec(function(err, doc) {
+		if (err) {
+			res.send(err);
+		}
+		else {
+			console.log("this is the response doc")
+			console.log(doc);
+			console.log("user's groups");
+			console.log(doc[0].groups[0]);
+			// res.send(doc);
+			res.json({ groups: doc[0].groups })
+		}
+	})
+
+});
+
 module.exports = router;

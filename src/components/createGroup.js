@@ -44,6 +44,7 @@ class CreateGroup extends Component {
 					console.log('group added');
 					this.props.hideForm();
 					this.addGroupToUser(response.data._id, this.props.userID);
+					this.getUserGroups(this.props.userID)
 				} else {
 					console.log('duplicate');
 				}
@@ -58,6 +59,16 @@ class CreateGroup extends Component {
 		}).then(response => {
 			console.log(response);
 		});
+	}
+
+	getUserGroups = (userID) => {
+		axios.post('/auth/api/user', {
+			userID: userID
+		}).then(response => {
+			console.log("getUserGroups response");
+			console.log(response);
+			this.props.refreshGroup(response.data.groups);
+		})
 	}
 
 	render(){

@@ -28,7 +28,7 @@ class Dashboard extends Component {
 render(){
 	let groupForm = null;
 		if(this.state.createGroup == true) {
-			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID}/>
+			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID} refreshGroup={this.props.refreshGroup}/>
 		}
 
 return (
