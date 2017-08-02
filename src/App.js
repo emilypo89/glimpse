@@ -130,7 +130,7 @@ class App extends Component {
 		return (
 			<div className="App" style={divStyle}>
 				{/*<h1>This is the main App component</h1>*/}
-				<Header user={this.state.user} />
+				{/*<Header user={this.state.user} />*/}
 				{/* LINKS to our different 'pages' */}
 				{/*<DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn}  />*/}
 				{/*  ROUTES */}

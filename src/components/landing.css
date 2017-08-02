@@ -1,3 +1,16 @@
+html{
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #01ABAA;
+  margin-bottom: 60px;
+}
+
 .fade-carousel {
     position: relative;
     height: 100vh;
@@ -38,8 +51,8 @@
     font-weight: bold;
     margin: 0;
     padding: 0;
-	font-family: 'Just Another Hand', cursive;
-	color: #FEDC3D;
+  font-family: 'Just Another Hand', cursive;
+  color: #FEDC3D;
 }
 
 .fade-carousel .carousel-inner .item .hero {
@@ -81,9 +94,19 @@
     background-color: #01ABAA;
     border-color: #1abc9c;
     outline: none;
-    margin: 20px auto;
-	text-transform: lowercase;
-	font-family: 'Roboto', sans-serif !important;
+    margin: 20px 5px;
+  text-transform: lowercase;
+  font-family: 'Roboto', sans-serif !important;
+  
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: white;
+  text-decoration: none;
 }
 
 /*PICTURE SLIDES*/
@@ -119,35 +142,52 @@
   padding: 0;
 
 }
+
+/*Modals*/
+.modal-title{
+  font-size: 40px;
+  color: #01ABAA;
+  font-family: 'Just Another Hand', cursive;
+}
+#signUpButton, #signInButton{
+  background-color: #01ABAA;
+}
+#signUpButton:hover, #signInButton:hover{
+  background-color: #fedc3d;
+}
+
 .glimpseAbout {
-	text-transform: lowercase;
-	font-family: 'Roboto', sans-serif;
+  text-transform: lowercase;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 5px;
 }
 
 .aboutP {
-	text-transform: lowercase;
-	font-family: 'Roboto', sans-serif;
+  text-transform: lowercase;
+  font-family: 'Roboto', sans-serif;
 }
 
 #about {
-	background-color: #FEA680;
-	padding: 12px
+  background-color: #FEA680;
+  padding: 12px;
 }
 
 
 .testimonialsH1 {
-	text-transform: lowercase;
-	font-family: 'Roboto', sans-serif;
-	color: #FEDC3D;
+  text-transform: lowercase;
+  font-family: 'Roboto', sans-serif;
+  color: #FEDC3D;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 #testimonials {
-	background-color: #01ABAA;
-	padding: 12px;
+  background-color: #01ABAA;
+  padding: 12px;
 }
 
 #callToAction {
-	background: transparent url("img/blurryCity.jpg") no-repeat top center fixed;
+  background: transparent url("img/blurryCity.jpg") no-repeat top center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -156,44 +196,129 @@
 }
 
 .awesome {
-	color: white;
-	font-family: 'Roboto', sans-serif;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 h3 {
-	color: white;
-	font-family: 'Roboto', sans-serif;
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 .fa-5x {
-	color: white;
+  color: white;
 }
 
 
 
 .align-items-center {
-	text-align: center;
+  text-align: center;
 }
 
 .awesomeP{
-	font-family: 'Roboto', sans-serif;
-	color: white;
+  font-family: 'Roboto', sans-serif;
+  color: white;
 }
 
 
-
-#footer {
-	background-color: black;
-	margin: 0;
+/* Quote Carousel */
+#quoteCarousel{
+  background-color: #01ABAA;
 }
 
-#footerP {
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	color: #FEDC3D;
-	padding: 25px;
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 30px;
+    /* Control buttons  */
+    /* Previous button  */
+    /* Next button  */
+    /* Changes the position of the indicators */
+    /* Changes the color of the indicators */
+}
+#quote-carousel .carousel-control {
+    background: none;
+    color: #CACACA;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 30px;
+}
+#quote-carousel .carousel-control.left {
+    left: -60px;
+}
+#quote-carousel .carousel-control.right {
+    right: -60px;
+}
+#quote-carousel .carousel-indicators {
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+#quote-carousel .carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+    border: 4px solid #CCC;
+    border-radius: 50px;
+    opacity: 0.4;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+#quote-carousel .carousel-indicators .active {
+    background: #333333;
+    width: 128px;
+    height: 128px;
+    border-radius: 100px;
+    border-color: #FEA680;
+    opacity: 1;
+    overflow: hidden;
+}
+.carousel-inner {
+    min-height: 300px;
+}
+.item blockquote {
+    border-left: none;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+
+
+}
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+    color: #fedc3d;
 }
 
+blockquote .small, blockquote footer, blockquote small {
+    display: block;
+    font-size: 30px;
+    color: #fedc3d;
+    font-family: 'Just Another Hand', cursive;
+    text-transform: lowercase;
+}
+
+#main{
+  margin-bottom: 0;
+  min-height: 100%;
+  background-color: #01ABAA;
+}
+
+#footer{
+  padding-top: 25px;
+  max-width: 100%;
+  line-height: 60px;
+  color: #FEDC3D;
+}
+
+#footerP{
+  font-family: 'Roboto', sans-serif;
+  margin: -15px;
+  background-color: black;
+}
 /********************************/
 /*          Media Queries       */
 /********************************/
@@ -202,4 +327,77 @@ h3 {
 }
 @media screen and (max-width: 640px){
     .hero h1 { font-size: 4em; }    
+}
+@media screen and (max-width: 1200px){
+    #callToAction { 
+      min-height: 600px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #callToAction { 
+      min-height: 600px;
+      background: transparent url("img/blurryCity.jpg") no-repeat top center fixed;
+    }
+}
+
+@media screen and (max-width: 800px){
+    p.quotez{
+      font-size: 16px;
+    }
+}
+
+
+@media screen and (max-width: 670px){
+    p.quotez{
+      font-size: 15px;
+    }
+}
+@media screen and (max-width: 630px){
+    #callToAction {
+      background: transparent url("img/blurryCity.jpg") no-repeat top center fixed;
+    }
+}
+
+@media screen and (max-width: 555px){
+    button.btn.btn-hero.btn-lg { 
+      margin: 5px;
+    }
+}
+
+@media screen and (max-width: 498px){
+    #quote-carousel .carousel-indicators .active{
+      width: 100px;
+      height: 100px;
+    }
+}
+
+@media screen and (max-width: 458px){
+    h3{
+      font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 444px){
+    #quote-carousel .carousel-indicators .active{
+      width: 80px;
+      height: 80px;
+    }
+}
+
+@media screen and (max-width: 410px){
+    #quote-carousel .carousel-indicators .active{
+      width: 60px;
+      height: 60px;
+    }
+    p.quotez{
+      font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 395px){
+    #callToAction {
+      min-height: 650px;
+      background: transparent url("img/blurryCity.jpg") no-repeat top center fixed;
+    }
 }
