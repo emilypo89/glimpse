@@ -19,12 +19,12 @@ router.get("/api/:id", function(req, res) {
 });
 
 // route create/add a new event
-router.post("/event/:id", function(req, res) {
+router.post("/event", function(req, res) {
 	console.log("Made it to the event post route!")
 	console.log(req.body)
-	Group.findOneAndUpdate({_id: req.params.id},
+	Group.findOneAndUpdate({_id: req.body.id},
 	{
-		$push: {events: req.body}
+		$push: {events: req.body.event}
 	}, function(err, doc) {
 		if (err) {
 			console.log(err)

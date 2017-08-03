@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './group.css';
 import { Route, Link } from 'react-router-dom';
 import Calendar from './calendar';
+import CreateEvent from './createEvent';
 
 const divStyle = {
   height: 600
@@ -10,14 +11,39 @@ const divStyle = {
 class Group extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      creatEvent: false
+    }
+    this.showEventForm = this.showEventForm.bind(this);
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   }
 
   componentDidMount() {
     console.log(this.props.match.params.id);
   }
 
+  showEventForm(){
+    this.setState({
+      createEvent: true
+    });
+  }
+
+  hideEventForm = () => {
+    this.setState({
+      createEvent: false
+    });
+  }
+
+  forceUpdateHandler () {
+    this.forceUpdate();
+  }
+
 	render(){
     // console.log(this.props.match.params.id);
+    let eventForm = null;
+    if(this.state.createEvent == true) {
+      eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} forceUpdateHandler={this.forceUpdateHandler}/>
+    }
 		return(
       <div className="main" id="mainCal">
         <div className="row" id="navBarRow">
@@ -59,7 +85,7 @@ class Group extends Component {
                   </div>
                 </div>
                 <div className="col-sm-2 sidenav">
-                  <button type="button" className="btn btn-hero"><Link to="#">add a new event</Link></button>
+                  <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
                   <p>User 1</p>
                   <p>User 2</p>
                   <p>User 3</p>
@@ -73,6 +99,8 @@ class Group extends Component {
               </div>
             </div>
           </div>
+          <createEventForm creatEvent={this.state.creatEvent} />
+           {eventForm}
           <div className="row" id="footer">
             <p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
           </div>
