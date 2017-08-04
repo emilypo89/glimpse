@@ -30,7 +30,8 @@ router.post("/event", function(req, res) {
 			console.log(err)
 		}
 		else {
-			res.send(doc)
+			console.log(doc);
+			res.send(doc);
 		}
 	});
 });

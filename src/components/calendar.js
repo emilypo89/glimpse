@@ -43,7 +43,7 @@ class Calendar extends React.Component {
 		console.log("Made it to CDM");
 		helpers.getEvents(this.props.currentGroup)
 			.then(response => {
-				console.log("made it to response");
+				console.log("made it to get events response");
 				console.log(response.data);
 				
 				let eventsArray = response.data.events;
