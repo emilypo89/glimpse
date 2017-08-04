@@ -53,5 +53,25 @@ router.post("/group", function(req, res) {
 	});
 });
 
+// route to add a user to group
+router.post("/addUser", function(req, res) {
+	console.log("made it to the add user to group route from calendar");
+	console.log(req.body);
+	Group.findOneAndUpdate({_id: req.body.groupID},
+	{
+		$push: {users: req.body.userID}
+	}, {new: true}).populate("users").exec(function(err, doc) {
+		if (err) {
+			console.log(err);
+		}
+		else{
+			console.log("add user to group doc route");
+			console.log(doc);
+			res.send(doc);
+		}
+	});
+})
+
+
 // export router
 module.exports = router;
