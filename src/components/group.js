@@ -178,7 +178,7 @@ class Group extends Component {
               </div>
               <div className="collapse navbar-collapse" id="myNavbar">
                 <ul className="nav navbar-nav">
-                  <li><a href="#">Create a Group</a></li>
+                  
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   <li>
@@ -189,18 +189,34 @@ class Group extends Component {
                       <button type="submit" className="btn btn-default">Find</button>
                     </form>
                   </li>
-                  <li><a onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                  <li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span>  Logout</button></li>
                 </ul>
               </div>
             </div>
           </nav>
         </div>
         <br />
+
+        <div className="row">
+          <createEventForm creatEvent={this.state.creatEvent} />
+           {eventForm}
+        </div>
+          <createAddUserForm addUser={this.state.addUser} />
+           {addUserForm}
+        
+
         <div className="row">
           <div className="container" id="calContainer">    
             <div className="container-fluid text-center">    
               <div className="row content">
-                <div className="col-sm-1"></div>
+                <div className="col-sm-2 sidenav">
+                  <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a user</button>
+                    {this.state.users.map((user, index) => {
+                    return(
+                      <p key={index}>{user.firstName}</p>
+                    )
+                  })}
+                </div>
                 <div className="col-lg-8 text-left" id="calBackground"> 
                   <div className="calendar" style={divStyle}>
 
@@ -211,30 +227,11 @@ class Group extends Component {
                 <div className="col-sm-2 sidenav">
                   <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a new user</button>
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
-                  {this.state.users.map((user, index) => {
-                    return(
-                      <p key={index}>{user.firstName}</p>
-                    )
-                  })}
+                  
 
-
-           
-                  {/*<div className="well">
-                    <p>POLL #1</p>
-                  </div>
-                  <div className="well">
-                    <p>POLL #2</p>
-                  </div>*/}
                 </div>
               </div>
             </div>
-          </div>
-          <createEventForm creatEvent={this.state.creatEvent} />
-           {eventForm}
-          <createAddUserForm addUser={this.state.addUser} />
-           {addUserForm}
-          <div className="row" id="footer">
-            <p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
           </div>
         </div>
 		  </div>
