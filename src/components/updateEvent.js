@@ -34,21 +34,24 @@ class UpdateEvent extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault()
-		axios
-			.post('/group/updateEvent', {
-				event: {
+		event.preventDefault();
+		let updatedArray = this.props.events;
+		updatedArray[this.props.currentIndex] = {
 					title: this.state.title,
 					start: this.state.start,
 					end: this.state.end,
 					desc: this.state.desc
-				},
-				id: this.props.currentGroup
+		}
+		console.log("updated array");
+		console.log(updatedArray);
+		axios
+			.post('/group/updateEvent', {
+				groupID: this.props.currentGroup,
+				updatedArray: updatedArray
 			})
 			.then(response => {
 				console.log("response after handle submit");
 				console.log(response);
-				// console.log("response id: " + response.data._id);
 				if (!response.data.errmsg) {
 					console.log('event added');
 					this.props.hideUpdateEventForm();
@@ -89,7 +92,7 @@ class UpdateEvent extends Component {
 								<textarea type="text" name="desc" value={this.state.desc} onChange={this.handleChange}/>
 					    	</div>
 		    			</form>
-				    <button type="button" className="btn btn btn-primary actionButton center-block" id="createEventButton" onClick={this.handleSubmit}>create event</button>
+				    <button type="button" className="btn btn btn-primary actionButton center-block" id="createEventButton" onClick={this.handleSubmit}>update event</button>
 		  	</div>
 			</div>
 			</div>

@@ -70,6 +70,25 @@ router.post("/addUser", function(req, res) {
 			res.send(doc);
 		}
 	});
+});
+
+// route to update an event 
+router.post("/updateEvent", function(req, res) {
+	console.log("made it to update event route!");
+	console.log(req.body);
+	Group.findOneAndUpdate({_id: req.body.groupID}),
+	{
+		$set: {events: req.body.updatedArray}
+	}, function(err, doc) {
+		if (err) {
+			console.log(err)
+		}
+		else{
+			console.log("update event route");
+			console.log(doc);
+			res.send(doc);
+		}
+	}
 })
 
 
