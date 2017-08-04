@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './dashboard.css';
+import './createGroup.css';
 import { Route, Link} from 'react-router-dom';
 import helpers from '../utils/helpers';
 import axios from 'axios';
@@ -73,24 +73,30 @@ class CreateGroup extends Component {
 
 	render(){
 		return(
-			<div className="panel panel-default">
-	  		<div className="panel-heading">
-	   			<h4 className="panel-title">create a group</h4>
-	  		</div>
-		  	<div className="panel-body">
-		     	<form>
-						<div className="form-group">
-							<label for="groupName">name:</label>
-							<input type="text" name="groupName" value={this.state.groupName} onChange={this.handleChange} />
-		    		</div>
+			<div className="row" id="createGroupRow">
+				<div className="col-lg-4"></div>
+				<div className="col-lg-4">
+					<div className="panel panel-default">
+	  				<div className="panel-heading" id="groupHeading">
+	   					<h4 className="panel-title text-center" id="createGroupTitle">create a group</h4>
+	  				</div>
+		  			<div className="panel-body" id="groupPanel">
+		     			<form className="form-inline">
+							<div className="form-group text-center groupText" >
+								<label for="groupName">name:</label><br />
+								<input type="text" name="groupName" value={this.state.groupName} onChange={this.handleChange} />
+		    				</div>
 					
-						<div className="form-group">
-							<label for="groupDescription">description:</label>
-							<textarea type="text" name="groupDescription" value={this.state.groupDescription} onChange={this.handleChange}/>
-				    </div>
-		    	</form>
-				    <button type="button" class="btn btn-primary" id="createGroupButton" onClick={this.handleSubmit}>create group</button>
-		  	</div>
+							<div className="form-group text-center groupText">
+								<label for="groupDescription">description:</label><br />
+								<textarea type="text" name="groupDescription" value={this.state.groupDescription} onChange={this.handleChange}/>
+				    		</div>
+		    			</form>
+				    <button type="button" className="btn btn-primary actionButton center-block" id="createGroupButton" onClick={this.handleSubmit}>create group</button>
+		  			</div>
+		  		</div>
+				</div>
+				<div className="col-lg-4"></div>
 			</div>
 		)
 	}

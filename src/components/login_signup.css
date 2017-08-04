@@ -9,7 +9,7 @@ body{
   margin-right: auto;
 }
 
-.panel-title{
+#loginPanel, #signUpTitle{
 	font-family: 'Just Another Hand', cursive;
 	font-size: 34px;
 }
@@ -24,3 +24,22 @@ body{
   border-color: #1abc9c;
   font-family: 'Roboto', sans-serif !important;
 }
+
+#panelBody {
+  background-color: white;
+  max-height: auto;
+  align-content: center;
+
+}
+
+#loginRow, #signupRow {
+  padding-top: 40px;
+}
+
+#loginHeading, #signUpHeading {
+  background-color: #01abaa;
+}
+
+
+
+
