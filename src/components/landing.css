@@ -57,19 +57,19 @@ body{
 
 .fade-carousel .carousel-inner .item .hero {
     opacity: 0;
-    -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s; 
+    -webkit-transition: 5s all ease-in-out .1s;
+       -moz-transition: 5s all ease-in-out .1s; 
+        -ms-transition: 5s all ease-in-out .1s; 
+         -o-transition: 5s all ease-in-out .1s; 
+            transition: 5s all ease-in-out .1s; 
 }
 .fade-carousel .carousel-inner .item.active .hero {
     opacity: 1;
-    -webkit-transition: 2s all ease-in-out .1s;
-       -moz-transition: 2s all ease-in-out .1s; 
-        -ms-transition: 2s all ease-in-out .1s; 
-         -o-transition: 2s all ease-in-out .1s; 
-            transition: 2s all ease-in-out .1s;    
+    -webkit-transition: 5s all ease-in-out .1s;
+       -moz-transition: 5s all ease-in-out .1s; 
+        -ms-transition: 5s all ease-in-out .1s; 
+         -o-transition: 5s all ease-in-out .1s; 
+            transition: 5s all ease-in-out .1s;    
 }
 
 /*OVERLAY*/

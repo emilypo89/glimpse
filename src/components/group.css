@@ -5,12 +5,12 @@
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
-  background-color: white !important;
   height: 450px;
-
+  background-color: rgba(255, 255, 255, .8) !important;
   border: .2px solid #292F36;
   border-radius: 15px;
   font-family: 'Roboto', sans-serif;
+
 }
 
 body {
@@ -82,8 +82,14 @@ body {
 #calBackground{
   background-color: rgba(255, 255, 255, .8);
   border-radius: 15px;
-  margin-right: 20px;
+  
 }
+
+/*#calContainer{
+  max-width: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+}*/
 
 /*#footer{
   

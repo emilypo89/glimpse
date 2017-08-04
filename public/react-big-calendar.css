@@ -2,6 +2,7 @@
   color: inherit;
   font: inherit;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 button.rbc-btn {
   overflow: visible;
@@ -65,6 +66,7 @@ button.rbc-input::-moz-focus-inner {
   font-weight: bold;
   font-size: 90%;
   min-height: 0;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-header > a,
 .rbc-header > a:active,
@@ -90,6 +92,7 @@ button.rbc-input::-moz-focus-inner {
       align-items: center;
   margin-bottom: 10px;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-toolbar .rbc-toolbar-label {
   width: 100%;
@@ -174,15 +177,17 @@ button.rbc-input::-moz-focus-inner {
 .rbc-event {
   cursor: pointer;
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: #01ABAA;
   border-radius: 5px;
-  color: #fff;
+  color: black;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-event.rbc-selected {
-  background-color: #265985;
+  background-color: #01ABAA;
 }
 .rbc-event-label {
   font-size: 80%;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-event-overlaps {
   box-shadow: -1px 1px 5px 0px rgba(51, 51, 51, 0.5);
@@ -223,6 +228,7 @@ button.rbc-input::-moz-focus-inner {
   height: auto;
   line-height: normal;
   white-space: nowrap;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-month-view {
   position: relative;
@@ -276,6 +282,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-date-cell.rbc-now {
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-date-cell > a,
 .rbc-date-cell > a:active,
@@ -436,6 +443,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-time-slot.rbc-now {
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-day-header {
   text-align: center;
@@ -452,6 +460,7 @@ button.rbc-input::-moz-focus-inner {
   color: white;
   font-size: 75%;
   padding: 3px;
+  font-family: 'Roboto', sans-serif;
 }
 .rbc-time-view {
   display: -ms-flexbox;

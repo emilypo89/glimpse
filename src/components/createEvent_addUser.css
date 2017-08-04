@@ -1,0 +1,28 @@
+#createEventPanel{
+	background-color: white;
+	max-height: auto;
+	align-content: center;
+	padding-left: 10px;
+	padding-right:10px;
+}
+
+#createEventTitle{
+	font-family: 'Just Another Hand', cursive;
+	font-size: 34px;
+}
+
+#createEventButton{
+  color: #f5f5f5;
+  background-color: #01ABAA;
+  border-color: #1abc9c;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.createEventText{
+    padding-left: 10px !important;
+}
+
+#createEventHeading{
+  background-color: #01abaa;
+}
+
