@@ -38,9 +38,6 @@ class Calendar extends React.Component {
 
 	} // ends constructor
 
-
-
-
 	render() {
 		console.log("this.state.events: ")
 		console.log(this.props.events)
