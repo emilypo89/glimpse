@@ -10,7 +10,8 @@ const GroupSchema = new Schema({
   events: [{
   	title: String,
   	start: String,
-  	end: String
+  	end: String,
+  	desc: String
   }],
   users:[{ type: Schema.Types.ObjectId, ref: "User"}]
 });

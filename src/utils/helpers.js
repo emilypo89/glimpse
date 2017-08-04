@@ -4,9 +4,10 @@ import axios from 'axios';
 // Exporting an object with methods for retrieving and posting data to our API
 const helper = {
   // Returns a promise object we can .then() off inside our Parent component
-  getEvents: function() {
-  	console.log("Made it to getEvents")
-    return axios.get("/api/597a1906fd390004e69fa30a");
+  getEvents: function(currentGroup) {
+    let url = "/group/api/" + currentGroup;
+  	console.log("Made it to getEvents");
+    return axios.get(url);
   },
 
   newGroup: function (groupData) {

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
-import './components/landing.css'
-import LoginForm from './components/LoginForm'
-import SignupForm from './components/SignupForm'
-import Header from './components/Header'
-import Home from './components/Home'
-import Calendar from './components/calendar'
-import Group from './components/group'
-import Landing from './components/landing'
-import Dashboard from './components/dashboard'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+import './App.css';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
+import Header from './components/Header';
+import Home from './components/Home';
+import Calendar from './components/calendar';
+import Group from './components/group';
+import Landing from './components/landing';
+import Dashboard from './components/dashboard';
 
 const divStyle = {
 	height: 600
@@ -65,10 +65,13 @@ class App extends Component {
 			loggedIn: false,
 			user: null,
 			userID: "",
-			groups: []
+			groups: [],
+			currentGroup: ""
 		}
 		this._logout = this._logout.bind(this)
 		this._login = this._login.bind(this)
+		this.refreshGroup = this.refreshGroup.bind(this)
+		this.selectGroup = this.selectGroup.bind(this)
 	}
 
 	componentDidMount() {
@@ -84,9 +87,9 @@ class App extends Component {
 				this.setState({
 					loggedIn: false,
 					user: null
-				})
+				});
 			}
-		})
+		});
 	}
 
 	_logout(event) {
@@ -99,9 +102,9 @@ class App extends Component {
 				this.setState({
 					loggedIn: false,
 					user: null
-				})
+				});
 			}
-		})
+		});
 	}
 
 	_login(email, password) {
@@ -120,9 +123,26 @@ class App extends Component {
 						user: response.data.user,
 						userID: response.data.user._id,
 						groups: response.data.user.groups
-					})
+					});
 				}
-			})
+			});
+	}
+
+	refreshGroup (group) {
+		this.setState({
+			groups: group
+		});
+	}
+
+	selectGroup (event) {
+		event.preventDefault();
+		// alert("reached selectGroup function");
+		console.log(event);
+		// this.setState({
+		// 	currentGroup: groupID
+		// });
+		// console.log("currentGroup");
+		// console.log(this.state.currentGroup);
 	}
 
 
@@ -143,9 +163,9 @@ class App extends Component {
 				/>
 				<Route exact path="/signup" component={SignupForm} />
 				{/* <LoginForm _login={this._login} /> */}
-				<Route exact path="/group" render={() => <Group userID={this.state.userID} />} />
+				<Route exact path="/group/:id" render={(props) => <Group {...this.props} {...props} userID={this.state.userID} groups={this.state.groups} _logout={this._logout} />} />
 				<Route exact path="/" render={() => <Landing />} />
-				<Route exact path="/dashboard" render={() => <Dashboard userID={this.state.userID} groups={this.state.groups} _logout={this._logout} />} />
+				<Route exact path="/dashboard" render={() => <Dashboard userID={this.state.userID} groups={this.state.groups} _logout={this._logout} refreshGroup={this.refreshGroup} selectGroup={this.selectGroup} />}  />
 			</div>
 		)
 	}
