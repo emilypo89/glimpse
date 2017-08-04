@@ -171,7 +171,6 @@ class Group extends Component {
     this.setState({
       currentIndex: index
     });
-    this.showUpdateEventForm;
   }
 
 // render function
@@ -187,7 +186,7 @@ class Group extends Component {
     }
     let updateEventForm = null;
     if(this.state.updateEvent == true) {
-      updateEventForm = <UpdateEvent hideUpdateEventForm={this.hideUpdateEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} events={this.state.events}/>
+      updateEventForm = <UpdateEvent currentIndex={this.state.currentIndex} hideUpdateEventForm={this.hideUpdateEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} events={this.state.events}/>
     }
 
 		return(
@@ -253,7 +252,7 @@ class Group extends Component {
                   {this.state.events.map((event, index) => {
                   let route = `/group/${index}`;
                   return(
-                     <Link to={route} onClick={this.showUpdateEventForm}>
+                     <Link to={route} onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
                         <p key={index}>
                           {event.title}
                           {/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}

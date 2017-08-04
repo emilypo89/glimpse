@@ -18,13 +18,12 @@ class UpdateEvent extends Component {
 	}
 
 	componentDidMount () {
-		console.log("index from url");
-		console.log(this.props.match.url);
+		
 		this.setState({
-			title: this.props.events[this.props.match.params.index].title,
-			start: this.props.events[this.props.match.params.index].start,
-			end: this.props.events[this.props.match.params.index].end,
-			desc: this.props.events[this.props.match.params.index].desc
+			title: this.props.events[this.props.currentIndex].title,
+			start: this.props.events[this.props.currentIndex].start,
+			end: this.props.events[this.props.currentIndex].end,
+			desc: this.props.events[this.props.currentIndex].desc
 		});
 	}
 
