@@ -17,7 +17,8 @@ class Group extends Component {
     super(props);
     this.state = {
       creatEvent: false,
-      events: []
+      events: [],
+      users: []
     }
     this.showEventForm = this.showEventForm.bind(this);
     this.getEvents = this.getEvents.bind(this);
@@ -33,7 +34,7 @@ class Group extends Component {
         
         let eventsArray = response.data.events;
 
-        let newStateArray =[];
+        let newStateEventsArray =[];
 
         eventsArray.forEach((event, index) => {
           console.log("index: " + index)
@@ -51,21 +52,27 @@ class Group extends Component {
           console.log("New Object")
           console.log(newEventObject)
 
-          newStateArray.push(newEventObject)
+          newStateEventsArray.push(newEventObject)
 
         // debugger
         console.log(newEventObject.end instanceof Date)
         })
 
-        console.log("newStateArray")
-        console.log(newStateArray)
+
+
+        let usersArray = response.data.users;
+        console.log("usserArray")
+        console.log(usersArray)
+
+       
 
 
 
 
         console.log(eventsArray)
         this.setState({
-          events: newStateArray
+          events: newStateEventsArray,
+          users: usersArray
         })
 
       })
@@ -189,9 +196,14 @@ class Group extends Component {
                 </div>
                 <div className="col-sm-2 sidenav">
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
-                  <p>User 1</p>
-                  <p>User 2</p>
-                  <p>User 3</p>
+                  {this.state.users.map((user, index) => {
+                    return(
+                      <p key={index}>{user.firstName}</p>
+                    )
+                  })}
+
+
+           
                   {/*<div className="well">
                     <p>POLL #1</p>
                   </div>

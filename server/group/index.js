@@ -6,7 +6,7 @@ const Group = require('../db/models/group');
 // route to group document
 router.get("/api/:id", function(req, res) {
 	console.log("made it to api/:id")
-	Group.findOne({_id: req.params.id}).exec(function(err, doc) {
+	Group.findOne({_id: req.params.id}).populate("users").exec(function(err, doc) {
 		if (err) {
 			console.log(err);
 		}
