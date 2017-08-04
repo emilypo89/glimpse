@@ -30,14 +30,9 @@ router.post("/event", function(req, res) {
 			console.log(err)
 		}
 		else {
-<<<<<<< HEAD
-			console.log(doc);
-			res.send(doc);
-=======
 			console.log("post event doc")
 			console.log(doc)
 			res.send(doc)
->>>>>>> fc1fbe09839933348834b4c3e442c232007a2590
 		}
 	});
 });
