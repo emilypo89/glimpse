@@ -8,7 +8,7 @@ export default class Landing extends Component {
   render() {
     return (
       <div id="mainLanding">
-        <div className="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+        <div className="carousel fade-carousel slide" data-ride="carousel" data-interval="5000" id="bs-carousel">
           <div id="slider-top" className="carousel slide col-lg-12" data-ride="carousel">
             {/*<!-- Overlay --> */}
             {/*<!-- <div className="overlay"></div> -->*/}

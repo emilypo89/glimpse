@@ -22,22 +22,35 @@ class AddUser extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		axios
-			.post('/group/event', {
+			.post('/auth/addUser/addGroup', {
 				email: this.state.email,
 				id: this.props.currentGroup
 			})
 			.then(response => {
 				console.log("response after handle submit");
 				console.log(response);
-				// console.log("response id: " + response.data._id);
 				if (!response.data.errmsg) {
-					console.log('event added');
+					console.log('group added to user');
 					this.props.hideAddUserForm();
-				} else {
+						axios.post("/group/addUser", {
+							groupID: this.props.currentGroup,
+							userID: response.data._id
+						}).then(response => {
+							console.log("response from adding user to group axios");
+							if (!response.data.errmsg) {
+								console.log("user added to group");
+								console.log(response.data.users);
+								this.props.refreshUsers(response.data.users);
+							}
+						});
+				} 
+				else {
 					console.log('duplicate');
 				}
 			});
 	}
+
+
 	render(){
 		return(
 			<div className="panel panel-default">
@@ -51,7 +64,7 @@ class AddUser extends Component {
 							<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 		    		</div>
 		    	</form>
-				    <button type="button" className="btn btn-primary" id="createEventButton" onClick={this.handleSubmit}>create event</button>
+				    <button type="button" className="btn btn-primary" id="createEventButton" onClick={this.handleSubmit}>add a new user</button>
 		  	</div>
 			</div>
 		)

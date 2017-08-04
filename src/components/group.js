@@ -26,6 +26,7 @@ class Group extends Component {
     this.getEvents = this.getEvents.bind(this);
     this.showAddUserForm = this.showAddUserForm.bind(this);
     this.hideAddUserForm = this.hideAddUserForm.bind(this);
+    this.refreshUsers = this.refreshUsers.bind(this);
 
   }
   
@@ -67,12 +68,6 @@ class Group extends Component {
         let usersArray = response.data.users;
         console.log("usserArray")
         console.log(usersArray)
-
-       
-
-
-
-
         console.log(eventsArray)
         this.setState({
           events: newStateEventsArray,
@@ -104,6 +99,15 @@ class Group extends Component {
     this.setState({
       addUser: false
     });
+  }
+
+  refreshUsers (groupResponse) {
+    console.log(groupResponse);
+    this.setState({
+      users: groupResponse
+    });
+    console.log("this.state.users from refreshUsers");
+    console.log(this.state.users);
   }
 
 
@@ -143,10 +147,6 @@ class Group extends Component {
 
         console.log("newStateArray")
         console.log(newStateArray)
-
-
-
-
         console.log(eventsArray)
         this.setState({
           events: newStateArray
@@ -158,12 +158,6 @@ class Group extends Component {
 
   } //ends getEvents
 
-
-
-
-
-
-
 	render(){
     // console.log(this.props.match.params.id);
     let eventForm = null;
@@ -172,7 +166,7 @@ class Group extends Component {
     }
     let addUserForm = null;
     if(this.state.addUser == true) {
-      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} />
+      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshUsers={this.refreshUsers} />
     }
 		return(
       <div className="main" id="mainCal">
@@ -184,7 +178,7 @@ class Group extends Component {
               </div>
               <div className="collapse navbar-collapse" id="myNavbar">
                 <ul className="nav navbar-nav">
-                  <li><a href="#">Create a Group</a></li>
+                  
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                   <li>
@@ -195,18 +189,34 @@ class Group extends Component {
                       <button type="submit" className="btn btn-default">Find</button>
                     </form>
                   </li>
-                  <li><a onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                  <li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span>  Logout</button></li>
                 </ul>
               </div>
             </div>
           </nav>
         </div>
         <br />
+
+        <div className="row">
+          <createEventForm creatEvent={this.state.creatEvent} />
+           {eventForm}
+        </div>
+          <createAddUserForm addUser={this.state.addUser} />
+           {addUserForm}
+        
+
         <div className="row">
           <div className="container" id="calContainer">    
             <div className="container-fluid text-center">    
               <div className="row content">
-                <div className="col-sm-1"></div>
+                <div className="col-sm-2 sidenav">
+                  <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a user</button>
+                    {this.state.users.map((user, index) => {
+                    return(
+                      <p key={index}>{user.firstName}</p>
+                    )
+                  })}
+                </div>
                 <div className="col-lg-8 text-left" id="calBackground"> 
                   <div className="calendar" style={divStyle}>
 
@@ -215,32 +225,10 @@ class Group extends Component {
                   </div>
                 </div>
                 <div className="col-sm-2 sidenav">
-                  <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a new user</button>
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
-                  {this.state.users.map((user, index) => {
-                    return(
-                      <p key={index}>{user.firstName}</p>
-                    )
-                  })}
-
-
-           
-                  {/*<div className="well">
-                    <p>POLL #1</p>
-                  </div>
-                  <div className="well">
-                    <p>POLL #2</p>
-                  </div>*/}
                 </div>
               </div>
             </div>
-          </div>
-          <createEventForm creatEvent={this.state.creatEvent} />
-           {eventForm}
-          <createAddUserForm addUser={this.state.addUser} />
-           {addUserForm}
-          <div className="row" id="footer">
-            <p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
           </div>
         </div>
 		  </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import './index.css';
+import './createEvent_addUser.css';
 import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
@@ -49,34 +50,40 @@ class CreateEvent extends Component {
 	}
 	render(){
 		return(
-			<div className="panel panel-default">
-	  		<div className="panel-heading">
-	   			<h4 className="panel-title">add an event</h4>
-	  		</div>
-		  	<div className="panel-body">
-		     	<form>
-						<div className="form-group">
-							<label for="title">event name:</label>
-							<input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-		    		</div>
+			<div className="row" id="createEventRow">
+				<div className="col-lg-2"></div>
+				<div className="col-lg-8">
+					<div className="panel panel-default">
+	  				<div className="panel-heading" id="createEventHeading">
+	   					<h4 className="panel-title text-center" id="createEventTitle">add an event</h4>
+	  				</div>
+		  			<div className="panel-body" id="createEventPanel">
+		     			<form className="form-inline text-center">
+							<div className="form-group text-center createEventText">
+								<label for="title">event name:</label>
+								<input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
+		    				</div>
 					
-						<div className="form-group">
-							<label for="start">event begins (July 22, 2017 5:00pm):</label>
-							<input type="text" name="start" value={this.state.start} onChange={this.handleChange} />
-		    		</div>
+							<div className="form-group text-center createEventText">
+								<label for="start">event begins (July 22, 2017 5:00 pm):</label>
+								<input type="text" name="start" value={this.state.start} onChange={this.handleChange} />
+			    			</div>
 
-		    		<div className="form-group">
-							<label for="end">end of event (July 22, 2017 9:00pm):</label>
-							<input type="text" name="end" value={this.state.end} onChange={this.handleChange} />
-		    		</div>
+			    			<div className="form-group text-center createEventText">
+								<label for="end">end of event (July 22, 2017 9:00 pm):</label>
+								<input type="text" name="end" value={this.state.end} onChange={this.handleChange} />
+			    			</div>
 
-		    		<div className="form-group">
-							<label for="desc">description:</label>
-							<textarea type="text" name="desc" value={this.state.desc} onChange={this.handleChange}/>
-				    </div>
-		    	</form>
-				    <button type="button" className="btn btn-primary" id="createEventButton" onClick={this.handleSubmit}>create event</button>
+			    			<div className="form-group text-center createEventText">
+								<label for="desc">description:</label>
+								<textarea type="text" name="desc" value={this.state.desc} onChange={this.handleChange}/>
+					    	</div>
+		    			</form>
+				    <button type="button" className="btn btn btn-primary actionButton center-block" id="createEventButton" onClick={this.handleSubmit}>create event</button>
 		  	</div>
+			</div>
+			</div>
+			<div className="col-lg-2"></div>
 			</div>
 		)
 	}
