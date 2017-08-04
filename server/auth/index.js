@@ -13,6 +13,7 @@ router.get('/user', (req, res, next) => {
 	}
 });
 
+// login route
 router.post('/login', passport.authenticate('local'), (req, res) => {
 	// req.user
 	// make a query & populate group to mongo based off of req.user, in the callback
@@ -33,6 +34,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 
 });
 
+// logout route
 router.post('/logout', (req, res) => {
 	if (req.user) {
 		req.session.destroy()
@@ -43,6 +45,7 @@ router.post('/logout', (req, res) => {
 	}
 });
 
+// route to signup as a user
 router.post('/signup', (req, res) => {
 	const { email, password, firstName, lastName } = req.body
 	// ADD VALIDATION
@@ -53,6 +56,7 @@ router.post('/signup', (req, res) => {
 	})
 });
 
+// route to add group to user by ID
 router.post('/addGroup', (req, res) => {
 	console.log("add group req body");
 	console.log(req.body);
@@ -64,11 +68,34 @@ router.post('/addGroup', (req, res) => {
 			console.log(err);
 		}
 		else {
+			console.log("add group to user by ID doc route");
+			console.log(doc);
 			res.send(doc);
 		}
 	});
 });
 
+// route to add group to user by email
+// this route is used to add group to user for the add user form on the group page
+router.post('/addUser/addGroup', (req, res) => {
+	console.log("add group req body");
+	console.log(req.body);
+	User.findOneAndUpdate({email: req.body.email}, 
+	{
+		$push: {groups: req.body.id}
+	}, function(err, doc) {
+		if (err){
+			console.log(err);
+		}
+		else {
+			console.log("add group to user by email doc route");
+			console.log(doc);
+			res.send(doc);
+		}
+	});
+});
+
+// route to populate the groups on the dashboard page for the user
 router.post('/api/user', (req, res) => {
 	// req.user
 	// make a query & populate group to mongo based off of req.user, in the callback
@@ -88,5 +115,6 @@ router.post('/api/user', (req, res) => {
 	})
 
 });
+
 
 module.exports = router;

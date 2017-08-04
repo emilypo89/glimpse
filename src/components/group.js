@@ -26,6 +26,7 @@ class Group extends Component {
     this.getEvents = this.getEvents.bind(this);
     this.showAddUserForm = this.showAddUserForm.bind(this);
     this.hideAddUserForm = this.hideAddUserForm.bind(this);
+    this.refreshUsers = this.refreshUsers.bind(this);
 
   }
   
@@ -67,12 +68,6 @@ class Group extends Component {
         let usersArray = response.data.users;
         console.log("usserArray")
         console.log(usersArray)
-
-       
-
-
-
-
         console.log(eventsArray)
         this.setState({
           events: newStateEventsArray,
@@ -104,6 +99,15 @@ class Group extends Component {
     this.setState({
       addUser: false
     });
+  }
+
+  refreshUsers (groupResponse) {
+    console.log(groupResponse);
+    this.setState({
+      users: groupResponse
+    });
+    console.log("this.state.users from refreshUsers");
+    console.log(this.state.users);
   }
 
 
@@ -143,10 +147,6 @@ class Group extends Component {
 
         console.log("newStateArray")
         console.log(newStateArray)
-
-
-
-
         console.log(eventsArray)
         this.setState({
           events: newStateArray
@@ -158,12 +158,6 @@ class Group extends Component {
 
   } //ends getEvents
 
-
-
-
-
-
-
 	render(){
     // console.log(this.props.match.params.id);
     let eventForm = null;
@@ -172,7 +166,7 @@ class Group extends Component {
     }
     let addUserForm = null;
     if(this.state.addUser == true) {
-      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} />
+      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshUsers={this.refreshUsers} />
     }
 		return(
       <div className="main" id="mainCal">
