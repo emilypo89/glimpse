@@ -25,23 +25,24 @@ class Dashboard extends Component {
 	}
 
 
+
 render(){
 	let groupForm = null;
 		if(this.state.createGroup == true) {
-			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID}/>
+			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID} refreshGroup={this.props.refreshGroup}/>
 		}
 
 return (
-<div className="Main" id="main">
+<div className="mainDashboard">
 	<div className="row" id="navBarRow">
 		<nav className="navbar navbar-inverse">
 			<div className="container-fluid">
 				<div className="navbar-header">	
-					<a className="navbar-brand" id="logo" href="#dashboard">glimpse</a>
+					<a className="navbar-brand" id="logo" href="/">glimpse</a>
 				</div>
 				<div className="collapse navbar-collapse" id="myNavbar">
 					<ul className="nav navbar-nav">
-						<li><button onClick={this.showForm}>Create a Group</button></li>
+						<li><button className="btn btn-primary" id="groupButton" onClick={this.showForm}>Create a Group</button></li>
 					</ul>
 					<ul className="nav navbar-nav navbar-right">
 						<li>
@@ -51,50 +52,67 @@ return (
 								</div>
 								<button type="submit" className="btn btn-default">Find</button>
 							</form></li>
-							<li><button onClick={this.props._logout}><Link to="/"><span className="glyphicon glyphicon-log-in"></span> Logout</Link></button></li>
+							<li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 		</div>
+
 		<br />
-			<div className="container-fluid text-left">
+
+
+
+				<div className="row" id="groupFormRow">
+					<createGroupForm createGroup={this.state.createGroup}/>
+					{groupForm}
+				</div>
+
+				<br /> <br /> <br /> <br />
+
+				<div className="container-fluid text-left">
 				<div className="row-inline content" id="calendarRow">
 					<div className="col-lg-12">
 						<i className="inline fa fa-calendar fa-2x" aria-hidden="true"></i>
 						<h1 className="inline" id="calendars">Your Calendars</h1>
 					</div>
 				</div>
-				<div className="row content">
-				{this.props.groups.map((group, index) => 
-					<div className="col-sm-3">
-						<Link to="/calendar">
-							<div className="panel panel-default">
+				<div className="row content" id="peaches">
+				{this.props.groups.map((group, index) => {
+					let route = `/group/${group._id}`;
+					return(
+					<div className="col-sm-2">
+						<Link to={route}>
+							<div className="panel panel-default" id="groupNameBox">
 								<div className="panel-body" key={index}>
-									{group}
+									{group.groupName}<br /> <br />
+                  <i>{group.groupDescription}</i>
+									{/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
 								</div>
 							</div>
 						</Link>
-					</div>)}
+					</div>);})}
 				</div>
 			</div>
+
 	<br/>
-	<createGroupForm createGroup={this.state.createGroup}/>
-		{groupForm}
+
+		
+	
 		
 
 	
 	
 
-	<footer className="container-fluid text-center" id="footer">
-		<p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
-	</footer>
+	{/*<div className="row" id="footerDashboard">
+            <p id="footerPDashboard">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
+    </div>*/}
 	
 	
 	
 	
 </div>
-);
+)
 }
 }
 	export default Dashboard;

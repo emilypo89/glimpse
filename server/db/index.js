@@ -3,7 +3,7 @@
 */
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-const MONGO_URL = 'mongodb://localhost/mern-passport'
+const MONGO_URL = 'mongodb://localhost/glimpse'
 
 if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI)

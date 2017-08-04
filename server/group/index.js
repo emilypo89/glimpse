@@ -5,29 +5,33 @@ const Group = require('../db/models/group');
 
 // route to group document
 router.get("/api/:id", function(req, res) {
-	Group.findOne({_id: req.params.id}).exec(function(err, doc) {
+	console.log("made it to api/:id")
+	Group.findOne({_id: req.params.id}).populate("users").exec(function(err, doc) {
 		if (err) {
-			console.log(err)
+			console.log(err);
 		}
 		else {
-			console.log(doc)
-			res.send(doc)
+			console.log("docs from findOne group on server")
+			console.log(doc);
+			res.send(doc);
 		}
 	});
 });
 
 // route create/add a new event
-router.post("/event/:id", function(req, res) {
+router.post("/event", function(req, res) {
 	console.log("Made it to the event post route!")
 	console.log(req.body)
-	Group.findOneAndUpdate({_id: req.params.id},
+	Group.findOneAndUpdate({_id: req.body.id},
 	{
-		$push: {events: req.body}
+		$push: {events: req.body.event}
 	}, function(err, doc) {
 		if (err) {
 			console.log(err)
 		}
 		else {
+			console.log("post event doc")
+			console.log(doc)
 			res.send(doc)
 		}
 	});

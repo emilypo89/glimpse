@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import './login_signup.css';
 
 class SignupForm extends Component {
 	constructor() {
@@ -48,38 +49,49 @@ class SignupForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		}
 		return (
-			<div className="panel panel-default">
-  			<div className="panel-heading">
-   			 <h4 className="panel-title">sign up</h4>
-  			</div>
-	  		<div className="panel-body">
-	        <form>
-		        <div className="form-group">
-		          <label for="firstName">First Name:</label>
-		          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}  />
-		        </div>
-		        
-		        <div className="form-group">
-		          <label for="lastName">Last Name:</label>
-		          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}  />
-		        </div>
+			<div className="row" id="signupRow">
+				<div className="col-lg-4"></div>
+				<div className="col-lg-4">
+					<div className="panel panel-default">
+		  			<div className="panel-heading" id="signUpHeading">
+		   				<h4 className="panel-title text-center" id="signUpTitle">sign up</h4>
+		  			</div>
+			  		<div className="panel-body" id="panelBody">
+			        <form>
+				        <div className="form-group text-center">
+				          <label for="firstName">first name:</label>
+				          <br />
+				          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}  />
+				        </div>
+				        
+				        <div className="form-group text-center">
+				          <label for="lastName">last name:</label>
+				          <br />
+				          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}  />
+				        </div>
 
-		        <div className="form-group">
-		          <label for="email">Email Address:</label>
-		          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-		        </div>
-		        
-		        <div className="form-group">
-		          <label for="password">Password:</label>
-		          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
-		        </div>
-		        <div className="form-group">
-		          <label for="confirmPassword">Confirm Password:</label>
-		          <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
-		        </div>
-		      </form>      
-          <button type="button" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
-	  		</div>
+				        <div className="form-group text-center">
+				          <label for="email">email address:</label>
+				          <br />
+				          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+				        </div>
+				        
+				        <div className="form-group text-center">
+				          <label for="password">password:</label>
+				          <br />
+				          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
+				        </div>
+				        <div className="form-group text-center">
+				          <label for="confirmPassword">confirm password:</label>
+				          <br />
+				          <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
+				        </div>
+				      </form>      
+		          <button type="button" className="btn btn-primary actionButton center-block" onClick={this.handleSubmit}>sign up</button>
+			  		</div>
+					</div>
+				</div>
+				<div className="col-lg-4"></div>
 			</div>
 		)
 	}
