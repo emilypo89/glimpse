@@ -30,6 +30,8 @@ router.post("/event", function(req, res) {
 			console.log(err)
 		}
 		else {
+			console.log("post event doc")
+			console.log(doc)
 			res.send(doc)
 		}
 	});

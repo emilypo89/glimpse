@@ -41,7 +41,7 @@ class CreateEvent extends Component {
 				if (!response.data.errmsg) {
 					console.log('event added');
 					this.props.hideEventForm();
-					this.props.forceUpdateHandler();
+					this.props.refreshEvent();
 				} else {
 					console.log('duplicate');
 				}

@@ -3,23 +3,72 @@ import './group.css';
 import { Route, Link } from 'react-router-dom';
 import Calendar from './calendar';
 import CreateEvent from './createEvent';
+import helpers from '../utils/helpers';
 
 const divStyle = {
   height: 600
 }
 
+
+
+
 class Group extends Component {
   constructor(props){
     super(props);
     this.state = {
-      creatEvent: false
+      creatEvent: false,
+      events: []
     }
     this.showEventForm = this.showEventForm.bind(this);
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
-  }
+    this.getEvents = this.getEvents.bind(this);
 
-  componentDidMount() {
-    console.log(this.props.match.params.id);
+  }
+  
+  componentDidMount(){
+      console.log("Made it to getEvents");
+    helpers.getEvents(this.props.match.params.id)
+      .then(response => {
+        console.log("made it to response");
+        console.log(response.data);
+        
+        let eventsArray = response.data.events;
+
+        let newStateArray =[];
+
+        eventsArray.forEach((event, index) => {
+          console.log("index: " + index)
+          console.log("the Event")
+          console.log(event)
+          var endDate = new Date(event.end)
+          var startDate = new Date(event.start)
+          var newEventObject = {
+            end: endDate,
+            start: startDate,
+            title: event.title,
+            desc: event.desc
+          }
+
+          console.log("New Object")
+          console.log(newEventObject)
+
+          newStateArray.push(newEventObject)
+
+        // debugger
+        console.log(newEventObject.end instanceof Date)
+        })
+
+        console.log("newStateArray")
+        console.log(newStateArray)
+
+
+
+
+        console.log(eventsArray)
+        this.setState({
+          events: newStateArray
+        })
+
+      })
   }
 
   showEventForm(){
@@ -34,15 +83,69 @@ class Group extends Component {
     });
   }
 
-  forceUpdateHandler () {
-    this.forceUpdate();
-  }
+
+  getEvents() {
+
+    console.log("Made it to getEvents");
+    helpers.getEvents(this.props.match.params.id)
+      .then(response => {
+        console.log("made it to response");
+        console.log(response.data);
+        
+        let eventsArray = response.data.events;
+
+        let newStateArray =[];
+
+        eventsArray.forEach((event, index) => {
+          console.log("index: " + index)
+          console.log("the Event")
+          console.log(event)
+          var endDate = new Date(event.end)
+          var startDate = new Date(event.start)
+          var newEventObject = {
+            end: endDate,
+            start: startDate,
+            title: event.title,
+            desc: event.desc
+          }
+
+          console.log("New Object")
+          console.log(newEventObject)
+
+          newStateArray.push(newEventObject)
+
+        // debugger
+        console.log(newEventObject.end instanceof Date)
+        })
+
+        console.log("newStateArray")
+        console.log(newStateArray)
+
+
+
+
+        console.log(eventsArray)
+        this.setState({
+          events: newStateArray
+        })
+
+      })
+
+
+
+  } //ends getEvents
+
+
+
+
+
+
 
 	render(){
     // console.log(this.props.match.params.id);
     let eventForm = null;
     if(this.state.createEvent == true) {
-      eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} forceUpdateHandler={this.forceUpdateHandler}/>
+      eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents}/>
     }
 		return(
       <div className="main" id="mainCal">
@@ -80,7 +183,7 @@ class Group extends Component {
                 <div className="col-lg-8 text-left" id="calBackground"> 
                   <div className="calendar" style={divStyle}>
 
-                    <Calendar currentGroup={this.props.match.params.id}/>
+                    <Calendar currentGroup={this.props.match.params.id} events={this.state.events}/>
 
                   </div>
                 </div>
