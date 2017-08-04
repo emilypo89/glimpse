@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 import Calendar from './calendar';
 import CreateEvent from './createEvent';
 import helpers from '../utils/helpers';
+import AddUser from './addUser';
 
 const divStyle = {
   height: 600
@@ -17,11 +18,14 @@ class Group extends Component {
     super(props);
     this.state = {
       creatEvent: false,
+      addUser: false,
       events: [],
       users: []
     }
     this.showEventForm = this.showEventForm.bind(this);
     this.getEvents = this.getEvents.bind(this);
+    this.showAddUserForm = this.showAddUserForm.bind(this);
+    this.hideAddUserForm = this.hideAddUserForm.bind(this);
 
   }
   
@@ -90,6 +94,18 @@ class Group extends Component {
     });
   }
 
+  showAddUserForm(){
+    this.setState({
+      addUser: true
+    });
+  }
+
+  hideAddUserForm = () => {
+    this.setState({
+      addUser: false
+    });
+  }
+
 
   getEvents() {
 
@@ -154,6 +170,10 @@ class Group extends Component {
     if(this.state.createEvent == true) {
       eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents}/>
     }
+    let addUserForm = null;
+    if(this.state.addUser == true) {
+      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} />
+    }
 		return(
       <div className="main" id="mainCal">
         <div className="row" id="navBarRow">
@@ -195,6 +215,7 @@ class Group extends Component {
                   </div>
                 </div>
                 <div className="col-sm-2 sidenav">
+                  <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a new user</button>
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
                   {this.state.users.map((user, index) => {
                     return(
@@ -216,6 +237,8 @@ class Group extends Component {
           </div>
           <createEventForm creatEvent={this.state.creatEvent} />
            {eventForm}
+          <createAddUserForm addUser={this.state.addUser} />
+           {addUserForm}
           <div className="row" id="footer">
             <p id="footerP">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
           </div>
