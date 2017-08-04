@@ -6,7 +6,7 @@ const Group = require('../db/models/group');
 // route to group document
 router.get("/api/:id", function(req, res) {
 	console.log("made it to api/:id")
-	Group.findOne({_id: req.params.id}).exec(function(err, doc) {
+	Group.findOne({_id: req.params.id}).populate("users").exec(function(err, doc) {
 		if (err) {
 			console.log(err);
 		}
@@ -30,8 +30,14 @@ router.post("/event", function(req, res) {
 			console.log(err)
 		}
 		else {
+<<<<<<< HEAD
 			console.log(doc);
 			res.send(doc);
+=======
+			console.log("post event doc")
+			console.log(doc)
+			res.send(doc)
+>>>>>>> fc1fbe09839933348834b4c3e442c232007a2590
 		}
 	});
 });
