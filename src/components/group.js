@@ -174,7 +174,7 @@ class Group extends Component {
           <nav className="navbar navbar-inverse">
             <div className="container-fluid">
               <div className="navbar-header">
-                <a className="navbar-brand" id="logo" href="#dashboard">glimpse</a>
+                <a className="navbar-brand" id="logo" href="/">glimpse</a>
               </div>
               <div className="collapse navbar-collapse" id="myNavbar">
                 <ul className="nav navbar-nav">

@@ -53,19 +53,25 @@ class AddUser extends Component {
 
 	render(){
 		return(
-			<div className="panel panel-default">
-	  		<div className="panel-heading">
-	   			<h4 className="panel-title">add a user</h4>
-	  		</div>
-		  	<div className="panel-body">
-		     	<form>
-						<div className="form-group">
-							<label for="email">new user's email:</label>
-							<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-		    		</div>
-		    	</form>
-				    <button type="button" className="btn btn-primary" id="createEventButton" onClick={this.handleSubmit}>add a new user</button>
+			<div className="row" id="addUserRow">
+				<div className="col-lg-4"></div>
+				<div className="col-lg-4">
+					<div className="panel panel-default">
+			  		<div className="panel-heading" id="addUserHeading">
+			   			<h4 className="panel-title text-center" id="addUserTitle">add a user</h4>
+			  		</div>
+			  		<div className="panel-body" id="addUserPanel">
+		     			<form className="form-inline text-center">
+							<div className="form-group text-center addUserText">
+								<label for="email">new user's email:</label>
+								<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+		    				</div>
+		    			</form>
+				    <button type="button" className="btn btn btn-primary actionButton center-block" id="addUserButton" onClick={this.handleSubmit}>add a new user</button>
 		  	</div>
+			</div>
+			</div>
+			<div className="col-lg-4"></div>
 			</div>
 		)
 	}

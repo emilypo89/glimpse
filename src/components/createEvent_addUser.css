@@ -1,4 +1,4 @@
-#createEventPanel{
+#createEventPanel, #addUserPanel{
 	background-color: white;
 	max-height: auto;
 	align-content: center;
@@ -6,23 +6,28 @@
 	padding-right:10px;
 }
 
-#createEventTitle{
+#createEventTitle, #addUserTitle{
 	font-family: 'Just Another Hand', cursive;
 	font-size: 34px;
 }
 
-#createEventButton{
+#createEventButton, #addUserButton{
   color: #f5f5f5;
   background-color: #01ABAA;
   border-color: #1abc9c;
   font-family: 'Roboto', sans-serif !important;
 }
 
-.createEventText{
+#addUserButton{
+	margin-top: 10px;
+
+}
+
+.createEventText, .addUserText{
     padding-left: 10px !important;
 }
 
-#createEventHeading{
+#createEventHeading, #addUserHeading{
   background-color: #01abaa;
 }
 
