@@ -210,7 +210,7 @@ class Group extends Component {
             <div className="container-fluid text-center">    
               <div className="row content">
                 <div className="col-sm-2 sidenav">
-                  <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a user</button>
+                  <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a user</button>
                     {this.state.users.map((user, index) => {
                     return(
                       <p key={index}>{user.firstName}</p>
@@ -225,10 +225,7 @@ class Group extends Component {
                   </div>
                 </div>
                 <div className="col-sm-2 sidenav">
-                  <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a new user</button>
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
-                  
-
                 </div>
               </div>
             </div>
