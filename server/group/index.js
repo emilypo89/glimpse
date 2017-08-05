@@ -76,7 +76,7 @@ router.post("/addUser", function(req, res) {
 router.post("/updateEvent", function(req, res) {
 	console.log("made it to update event route!");
 	console.log(req.body);
-	Group.findOneAndUpdate({_id: req.body.groupID}),
+	Group.findOneAndUpdate({_id: req.body.groupID},
 	{
 		$set: {events: req.body.updatedArray}
 	}, function(err, doc) {
@@ -88,7 +88,7 @@ router.post("/updateEvent", function(req, res) {
 			console.log(doc);
 			res.send(doc);
 		}
-	}
+	})
 })
 
 

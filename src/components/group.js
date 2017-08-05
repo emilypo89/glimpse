@@ -250,14 +250,14 @@ class Group extends Component {
                 <div className="col-sm-2 sidenav">
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
                   {this.state.events.map((event, index) => {
-                  let route = `/group/${index}`;
+                  
                   return(
-                     <Link to={route} onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
+                     <a onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
                         <p key={index}>
                           {event.title}
                           {/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
                         </p>
-                    </Link>);})}
+                    </a>);})}
                 </div>
               </div>
             </div>
