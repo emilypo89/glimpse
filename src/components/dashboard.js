@@ -98,15 +98,8 @@ return (
 						<li><button className="btn btn-primary" id="groupButton" onClick={this.showForm}>Create a Group</button></li>
 					</ul>
 					<ul className="nav navbar-nav navbar-right">
-						<li>
-							<form className="navbar-form pull-right">
-								<div className="form-group">
-									<input type="text" className="form-control" placeholder="Search for a Group" />
-								</div>
-								<button type="submit" className="btn btn-default">Find</button>
-							</form></li>
-							<li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
-						</ul>
+						<li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
+					</ul>
 					</div>
 				</div>
 			</nav>
@@ -133,13 +126,13 @@ return (
 				return(
 				<div className="row" key={index}>
 					<div className="panel panel-default" id="groupNameBox">
-						<Link to={route}>
 							<div className="panel-body panel-fixed" key={index.groupName}>
-								<h4>{group.groupName}</h4> <br />
-                <p><i>{group.groupDescription}</i></p>
+                <Link to={route}>
+								  <h4>{group.groupName}</h4> <br />
+                  <p><i>{group.groupDescription}</i></p>
+                </Link>
+                <button className="btn btn-primary pull-right" id="deleteButton" onClick={(group) => {this.groupToDelete(index);}}><i className="fa fa-times" id="xDelete" aria-hidden="true"></i></button>
 							</div>
-						</Link>
-						<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
 					</div>
         </div>);})}
 			</div>

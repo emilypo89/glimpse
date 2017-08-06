@@ -10,7 +10,17 @@
   border: .2px solid #292F36;
   border-radius: 15px;
   font-family: 'Roboto', sans-serif;
+  color: black;
 
+}
+
+.sideNavP {
+    margin: 0 0 10px;
+    color: black !important;
+}
+
+#eventUpdate {
+  cursor: pointer;
 }
 
 body {

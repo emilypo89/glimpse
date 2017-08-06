@@ -121,6 +121,17 @@ i{
 
 }
 
+#deleteButton{
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(254,166,128,0);
+  border-color: rgba(254,166,128,0);
+  color: white !important;
+}
+
+#xDelete{
+  padding-right: 0px;
+}
+
 
 #groupButton:hover{
   color: white;
