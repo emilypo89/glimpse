@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Link } from 'react-router-dom';
-import axios from "axios";
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './landing.css';
 
 export default class Landing extends Component {
@@ -188,9 +186,9 @@ export default class Landing extends Component {
           {/*<!-- FOOTER -->*/}
           
           <div className="row" id="footerLanding">
-            <p id="footerPLanding">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
+            <p id="footerPLanding">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank" rel="noopener noreferrer">Erin</a>, <a href="http://www.github.com/njedic" target="_blank" rel="noopener noreferrer">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank" rel="noopener noreferrer">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" rel="noopener noreferrer">Adam</a></p>
           </div>
-          
+
       </div>
 
 

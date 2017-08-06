@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './group.css';
-import { Route, Link } from 'react-router-dom';
 import Calendar from './calendar';
 import CreateEvent from './createEvent';
 import helpers from '../utils/helpers';
@@ -176,17 +175,20 @@ class Group extends Component {
 // render function
 	render(){
     // console.log(this.props.match.params.id);
+    // defining conditional componet for creating an event
     let eventForm = null;
-    if(this.state.createEvent == true) {
-      eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents}/>
+    if(this.state.createEvent === true) {
+      eventForm = <CreateEvent hideEventForm={this.hideEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} creatEvent={this.state.creatEvent} />
     }
+    // defining conditional componet for adding a user to a group
     let addUserForm = null;
-    if(this.state.addUser == true) {
-      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshUsers={this.refreshUsers} />
+    if(this.state.addUser === true) {
+      addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshUsers={this.refreshUsers} addUser={this.state.addUser} />
     }
+    // defining conditional componet for updating an event
     let updateEventForm = null;
-    if(this.state.updateEvent == true) {
-      updateEventForm = <UpdateEvent currentIndex={this.state.currentIndex} hideUpdateEventForm={this.hideUpdateEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} events={this.state.events}/>
+    if(this.state.updateEvent === true) {
+      updateEventForm = <UpdateEvent currentIndex={this.state.currentIndex} hideUpdateEventForm={this.hideUpdateEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} events={this.state.events} updateEvent={this.state.updateEvent} />
     }
 
 		return(
@@ -219,12 +221,12 @@ class Group extends Component {
         <br />
 
         <div className="row">
-          <createEventForm creatEvent={this.state.creatEvent} />
+          <createEventForm />
            {eventForm}
         </div>
-          <createAddUserForm addUser={this.state.addUser} />
+          <createAddUserForm />
            {addUserForm}
-          <createUpdateEventForm updateEvent={this.state.updateEvent} />
+          <createUpdateEventForm />
            {updateEventForm} 
         
 
@@ -255,7 +257,6 @@ class Group extends Component {
                      <a onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
                         <p className="sideNavP" key={index}>
                           {event.title}
-                          {/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
                         </p>
                     </a>);})}
                 </div>

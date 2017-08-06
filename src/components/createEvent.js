@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import './index.css';
 import './createEvent_addUser.css';
-import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
+// create event conditional component
 class CreateEvent extends Component {
 	constructor() {
 		super();
@@ -17,12 +16,15 @@ class CreateEvent extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+	// function to change state when user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
 	}
 
+	// axios request to the server on submit
+	// in response hide create event form and refresh events so the page re renders
 	handleSubmit(event) {
 		event.preventDefault()
 		axios
@@ -38,7 +40,6 @@ class CreateEvent extends Component {
 			.then(response => {
 				console.log("response after handle submit");
 				console.log(response);
-				// console.log("response id: " + response.data._id);
 				if (!response.data.errmsg) {
 					console.log('event added');
 					this.props.hideEventForm();
