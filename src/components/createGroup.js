@@ -74,14 +74,14 @@ class CreateGroup extends Component {
 	render(){
 		return(
 			<div className="row" id="createGroupRow">
-				<div className="col-lg-4"></div>
-				<div className="col-lg-4">
+				<div className="col-lg-2"></div>
+				<div className="col-lg-8">
 					<div className="panel panel-default">
 	  				<div className="panel-heading" id="groupHeading">
 	   					<h4 className="panel-title text-center" id="createGroupTitle">create a group</h4>
 	  				</div>
 		  			<div className="panel-body" id="groupPanel">
-		     			<form className="form-inline">
+		     			<form className="form-inline text-center">
 							<div className="form-group text-center groupText" >
 								<label for="groupName">name:</label><br />
 								<input type="text" name="groupName" value={this.state.groupName} onChange={this.handleChange} />
@@ -96,7 +96,7 @@ class CreateGroup extends Component {
 		  			</div>
 		  		</div>
 				</div>
-				<div className="col-lg-4"></div>
+				<div className="col-lg-2"></div>
 			</div>
 		)
 	}
