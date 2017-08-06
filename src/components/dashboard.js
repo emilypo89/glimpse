@@ -133,13 +133,13 @@ return (
 				return(
 				<div className="row" key={index}>
 					<div className="panel panel-default" id="groupNameBox">
-						<Link to={route}>
 							<div className="panel-body panel-fixed" key={index.groupName}>
-								<h4>{group.groupName}</h4> <br />
-                <p><i>{group.groupDescription}</i></p>
+                <Link to={route}>
+								  <h4>{group.groupName}</h4> <br />
+                  <p><i>{group.groupDescription}</i></p>
+                </Link>
+                <button className="btn btn-primary pull-right" id="deleteButton" onClick={(group) => {this.groupToDelete(index);}}><i className="fa fa-times" id="xDelete" aria-hidden="true"></i></button>
 							</div>
-						</Link>
-						<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
 					</div>
         </div>);})}
 			</div>

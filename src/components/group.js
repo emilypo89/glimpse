@@ -238,7 +238,7 @@ class Group extends Component {
                   <button type="button" className="btn btn-hero" onClick={this.showAddUserForm}>add a user</button>
                     {this.state.users.map((user, index) => {
                     return(
-                      <p key={index}>{user.firstName}</p>
+                      <p className="sideNavP" key={index}>{user.firstName}</p>
                     )
                   })}
                 </div>
@@ -255,7 +255,7 @@ class Group extends Component {
                   
                   return(
                      <a onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
-                        <p key={index}>
+                        <p className="sideNavP" key={index}>
                           {event.title}
                         </p>
                     </a>);})}
