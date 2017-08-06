@@ -1,0 +1,54 @@
+body{
+	background: url("img/blurryCity.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#loginPanel, #signUpTitle{
+	font-family: 'Just Another Hand', cursive;
+	font-size: 34px;
+}
+
+.form-group{
+	font-family: 'Roboto', sans-serif !important;
+}
+
+.actionButton, .actionButton:hover{
+	color: #f5f5f5;
+  background-color: #01ABAA;
+  border-color: #1abc9c;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+#panelBody {
+  background-color: white;
+  max-height: auto;
+  align-content: center;
+
+}
+
+#loginRow, #signupRow {
+  padding-top: 40px;
+}
+
+#loginHeading, #signUpHeading {
+  background-color: #01abaa;
+}
+
+@media screen and (min-width: 1199) {
+  .panel{
+    vertical-align: middle;
+    position: fixed;
+    top: 25%;
+  }
+  
+}
+
+
+
+
