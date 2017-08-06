@@ -51,8 +51,8 @@ class CreateEvent extends Component {
 	render(){
 		return(
 			<div className="row" id="createEventRow">
-				<div className="col-lg-2"></div>
-				<div className="col-lg-8">
+				<div className="col-lg-1"></div>
+				<div className="col-lg-10">
 					<div className="panel panel-default">
 	  				<div className="panel-heading" id="createEventHeading">
 	   					<h4 className="panel-title text-center" id="createEventTitle">add an event</h4>
@@ -83,7 +83,7 @@ class CreateEvent extends Component {
 		  	</div>
 			</div>
 			</div>
-			<div className="col-lg-2"></div>
+			<div className="col-lg-1"></div>
 			</div>
 		)
 	}
