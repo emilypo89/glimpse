@@ -91,6 +91,24 @@ router.post("/updateEvent", function(req, res) {
 	})
 })
 
+router.post("/deleteUser", function(req, res) {
+	console.log("made it to delete user from group route");
+	console.log(req.body);
+	Group.findOneAndUpdate({_id: req.body.groupID}, 
+		{
+			$pull: {users: req.body.userID}
+		}, function(err, doc) {
+			if (err) {
+				console.log(err)
+			}
+			else {
+				console.log("delete user from group route");
+				console.log(doc);
+				res.send(doc);
+			}
+		})
+})
+
 
 // export router
 module.exports = router;
