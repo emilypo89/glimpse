@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import './index.css';
 import './createEvent_addUser.css';
-import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
+// update event conditional component
 class UpdateEvent extends Component {
 	constructor() {
 		super();
@@ -17,8 +16,8 @@ class UpdateEvent extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+	// when the component mounts is sets the state to the event the user wants to update
 	componentDidMount () {
-		
 		this.setState({
 			title: this.props.events[this.props.currentIndex].title,
 			start: this.props.events[this.props.currentIndex].start,
@@ -27,12 +26,15 @@ class UpdateEvent extends Component {
 		});
 	}
 
+	// function to set the state as the user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
 	}
 
+	// updates the event on submit 
+	// in response hides update event form and refreshes events
 	handleSubmit(event) {
 		event.preventDefault();
 		let updatedArray = this.props.events;

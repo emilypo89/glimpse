@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import './login_signup.css';
 
+// login in form component
 class LoginForm extends Component {
 	constructor() {
 		super()
@@ -14,36 +15,21 @@ class LoginForm extends Component {
 		this.handleChange = this.handleChange.bind(this)
 	}
 
+	// function to change state as user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
 
+	// on submit this function logs in the user and redirects to the dashboard
 	handleSubmit(event) {
 		event.preventDefault()
 		console.log('handleSubmit')
 		this.props._login(this.state.email, this.state.password)
-		// clean up the form
-		// this.setState({
-		// 	email: '',
-		// 	password: ''
-		// })
-		// redirect - will clean form
 		this.setState({
 			redirectTo: '/dashboard'
 		})
-		// axios
-		// 	.post('/auth/login', {
-		// 		email: this.state.email,
-		// 		password: this.state.password
-		// 	})
-		// 	.then(response => {
-		// 		if (response.status === 200) {
-		// 			// update the state
-		// 		}
-		// 		console.log(response)
-		// 	})
 	}
 
 	render() {
@@ -61,12 +47,12 @@ class LoginForm extends Component {
 			  			<div className="panel-body" id="panelBody">
 			     			<form>
 			          	<div className="form-group text-center">
-			            	<label for="email">email address:</label>
+			            	<label htmlFor="email">email address:</label>
 			            	<br />
 			            	<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 			          	</div>
 			          	<div className="form-group text-center">
-			            	<label for="password">password:</label>
+			            	<label htmlFor="password">password:</label>
 			            	<br />
 			            	<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
 			          	</div>

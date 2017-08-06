@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './dashboard.css';
-import { Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import CreateGroup from './createGroup.js';
 import axios from 'axios';
-// import Calendar from './containers/calendar.js';
+
+// Dashboard component
 class Dashboard extends Component {
 	constructor(){
 		super();
@@ -15,33 +16,33 @@ class Dashboard extends Component {
 		this.groupToDelete = this.groupToDelete.bind(this);
 	}
 
+	// function to show the create group form
 	showForm(){
 		this.setState({
 			createGroup: true
 		});
 	}
 
+	// function to hide group form
 	hideForm = () => {
 		this.setState({
 			createGroup: false
 		});
 	}
 
+	// function to set the state to delete a group from the dashboard page
 	groupToDelete (group) {
 		this.setState({
 			groupToDelete: group
 		}, this.deleteGroupFromUsers);	
 	}
 
-
-
+	// function to delete a group from a user page
 	deleteGroupFromUsers (event) {
-		// event.preventDefault();
 		console.log("this.props.groups");
 		console.log(this.props.groups);
 		const groupIDToDelete = this.props.groups[this.state.groupToDelete]._id;
 		console.log("group id to delete: " + groupIDToDelete);
-		
 		let groupsArray = this.props.groups;
 		groupsArray.splice(this.state.groupToDelete, 1);
 		axios.post("/auth/deleteGroup", {
@@ -60,6 +61,7 @@ class Dashboard extends Component {
 		});
 	}
 
+	// function to delete the user from a group
 	deleteUserfromGroups (groupID, userID) {
 		axios.post("group/deleteUser", {
 			groupID: groupID,
@@ -75,12 +77,12 @@ class Dashboard extends Component {
 		});
 	}
 
-
-
+// render function
 render(){
+	// creating the conditional component and passing states down to it
 	let groupForm = null;
-		if(this.state.createGroup == true) {
-			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID} refreshGroup={this.props.refreshGroup}/>
+		if(this.state.createGroup === true) {
+			groupForm = <CreateGroup hideForm={this.hideForm} userID={this.props.userID} refreshGroup={this.props.refreshGroup} createGroup={this.state.createGroup}/>
 		}
 
 return (
@@ -109,59 +111,40 @@ return (
 				</div>
 			</nav>
 		</div>
-
 		<br />
-
-
-
-				<div className="row" id="groupFormRow">
-					<createGroupForm createGroup={this.state.createGroup}/>
-					{groupForm}
-				</div>
-
-				<br /> <br /> <br /> <br />
-
-				<div className="container-fluid text-left">
-				<div className="row-inline content" id="calendarRow">
-					<div className="col-lg-12">
-						<i className="inline fa fa-calendar fa-2x" aria-hidden="true"></i>
-						<h1 className="inline" id="calendars">Your Calendars</h1>
-					</div>
-				</div>
-				<div className="row content" id="peaches">
-				{this.props.groups.map((group, index) => {
-					let route = `/group/${group._id}`;
-					return(
-					<div className="row">
-						<div className="panel panel-default" id="groupNameBox">
-							<Link to={route}>
-								<div className="panel-body panel-fixed" key={index}>
-									<p><h4>{group.groupName}</h4> <br />
-                  <i>{group.groupDescription}</i></p>
-								</div>
-							</Link>
-							<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
-						</div>
-          </div>);})}
-				</div>
+			<div className="row" id="groupFormRow">
+				<createGroupForm />
+				{groupForm}
 			</div>
 
+			<br /> <br /> <br /> <br />
+
+			<div className="container-fluid text-left">
+			<div className="row-inline content" id="calendarRow">
+				<div className="col-lg-12">
+					<i className="inline fa fa-calendar fa-2x" aria-hidden="true"></i>
+					<h1 className="inline" id="calendars">Your Calendars</h1>
+				</div>
+			</div>
+			<div className="row content" id="peaches">
+		{/*map function looping through all of the groups into their own panel*/}
+			{this.props.groups.map((group, index) => {
+				let route = `/group/${group._id}`;
+				return(
+				<div className="row" key={index}>
+					<div className="panel panel-default" id="groupNameBox">
+						<Link to={route}>
+							<div className="panel-body panel-fixed" key={index.groupName}>
+								<h4>{group.groupName}</h4> <br />
+                <p><i>{group.groupDescription}</i></p>
+							</div>
+						</Link>
+						<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
+					</div>
+        </div>);})}
+			</div>
+		</div>
 	<br/>
-
-		
-	
-		
-
-	
-	
-
-	{/*<div className="row" id="footerDashboard">
-            <p id="footerPDashboard">Created with love by: <a href="http://www.github.com/erinlevine" target="_blank">Erin</a>, <a href="http://www.github.com/njedic" target="_blank">Nikki</a>, <a href="http://www.github.com/emilypo89" target="_blank">Emily</a>, and <a href="http://www.github.com/adamk1230" target="_blank" >Adam</a></p>
-    </div>*/}
-	
-	
-	
-	
 </div>
 )
 }

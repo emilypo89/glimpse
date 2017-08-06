@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './createGroup.css';
-import { Route, Link} from 'react-router-dom';
-import helpers from '../utils/helpers';
 import axios from 'axios';
 
+// create group conditional component
 class CreateGroup extends Component {
 	constructor() {
 		super();
@@ -15,18 +14,16 @@ class CreateGroup extends Component {
 		this.handleChange = this.handleChange.bind(this)
 		this.addGroupToUser = this.addGroupToUser.bind(this)
 	}
-	// newGroup () {
-	// 	helpers.newGroup(groupData)
-	// }
 
+	// changes the state as the user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
 	}
 
-
-
+	// axios request to server on submit of new group 
+	// in response hiding the form, adding the group to user, and refreshing the groups
 	handleSubmit(event) {
 		event.preventDefault()
 		// TODO - validate!
@@ -51,6 +48,7 @@ class CreateGroup extends Component {
 			});
 	}
 
+	// function adding group to user
 	addGroupToUser = (groupID, userID) => {
 		console.log("made it to add group to user");
 		axios.post('/auth/addGroup', {
@@ -61,6 +59,7 @@ class CreateGroup extends Component {
 		});
 	}
 
+	// function to get the users groups inorder to refresh them
 	getUserGroups = (userID) => {
 		axios.post('/auth/api/user', {
 			userID: userID
@@ -83,12 +82,12 @@ class CreateGroup extends Component {
 		  			<div className="panel-body" id="groupPanel">
 		     			<form className="form-inline">
 							<div className="form-group text-center groupText" >
-								<label for="groupName">name:</label><br />
+								<label htmlFor="groupName">name:</label><br />
 								<input type="text" name="groupName" value={this.state.groupName} onChange={this.handleChange} />
 		    				</div>
 					
 							<div className="form-group text-center groupText">
-								<label for="groupDescription">description:</label><br />
+								<label htmlFor="groupDescription">description:</label><br />
 								<textarea type="text" name="groupDescription" value={this.state.groupDescription} onChange={this.handleChange}/>
 				    		</div>
 		    			</form>

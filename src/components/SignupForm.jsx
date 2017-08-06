@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import './login_signup.css';
 
+// sign up form component
 class SignupForm extends Component {
 	constructor() {
 		super()
@@ -17,11 +18,15 @@ class SignupForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
+
+	// function to update state as user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
+
+	// function to create a new user
 	handleSubmit(event) {
 		event.preventDefault()
 		// TODO - validate!
@@ -59,30 +64,30 @@ class SignupForm extends Component {
 			  		<div className="panel-body" id="panelBody">
 			        <form>
 				        <div className="form-group text-center">
-				          <label for="firstName">first name:</label>
+				          <label htmlFor="firstName">first name:</label>
 				          <br />
 				          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}  />
 				        </div>
 				        
 				        <div className="form-group text-center">
-				          <label for="lastName">last name:</label>
+				          <label htmlFor="lastName">last name:</label>
 				          <br />
 				          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}  />
 				        </div>
 
 				        <div className="form-group text-center">
-				          <label for="email">email address:</label>
+				          <label htmlFor="email">email address:</label>
 				          <br />
 				          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 				        </div>
 				        
 				        <div className="form-group text-center">
-				          <label for="password">password:</label>
+				          <label htmlFor="password">password:</label>
 				          <br />
 				          <input type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
 				        </div>
 				        <div className="form-group text-center">
-				          <label for="confirmPassword">confirm password:</label>
+				          <label htmlFor="confirmPassword">confirm password:</label>
 				          <br />
 				          <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
 				        </div>

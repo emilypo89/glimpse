@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import './index.css';
-import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
+// add user conditional component
 class AddUser extends Component {
 	constructor() {
 		super();
@@ -13,12 +12,15 @@ class AddUser extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+	// function to update state when user types
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
 	}
 
+	// axios request to server when user submits
+	// in response hide the add new user form, another axios request to the server to add user to groups, and then refresh the users 
 	handleSubmit(event) {
 		event.preventDefault()
 		axios
