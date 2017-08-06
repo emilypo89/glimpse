@@ -5,31 +5,36 @@ import Calendar from './calendar';
 import CreateEvent from './createEvent';
 import helpers from '../utils/helpers';
 import AddUser from './addUser';
+import UpdateEvent from './updateEvent';
 
+// style so that the calendar fits on the group page
 const divStyle = {
   height: 600
 }
 
-
-
-
+// group component
 class Group extends Component {
   constructor(props){
     super(props);
     this.state = {
       creatEvent: false,
       addUser: false,
+      updateEvent: false,
       events: [],
-      users: []
+      users: [],
+      currentIndex: ""
     }
     this.showEventForm = this.showEventForm.bind(this);
     this.getEvents = this.getEvents.bind(this);
     this.showAddUserForm = this.showAddUserForm.bind(this);
     this.hideAddUserForm = this.hideAddUserForm.bind(this);
     this.refreshUsers = this.refreshUsers.bind(this);
+    this.showUpdateEventForm = this.showUpdateEventForm.bind(this);
+    this.hideUpdateEventForm = this.hideUpdateEventForm.bind(this);
 
   }
   
+  // on componenet did mount helper axios request to pull the event and set the state as the group's events on page load
   componentDidMount(){
       console.log("Made it to getEvents");
     helpers.getEvents(this.props.match.params.id)
@@ -42,29 +47,22 @@ class Group extends Component {
         let newStateEventsArray =[];
 
         eventsArray.forEach((event, index) => {
-          console.log("index: " + index)
-          console.log("the Event")
-          console.log(event)
-          var endDate = new Date(event.end)
-          var startDate = new Date(event.start)
+          console.log("index: " + index);
+          console.log("the Event");
+          console.log(event);
+          var endDate = new Date(event.end);
+          var startDate = new Date(event.start);
           var newEventObject = {
             end: endDate,
             start: startDate,
             title: event.title,
             desc: event.desc
           }
-
-          console.log("New Object")
-          console.log(newEventObject)
-
-          newStateEventsArray.push(newEventObject)
-
-        // debugger
-        console.log(newEventObject.end instanceof Date)
+          console.log("New Object");
+          console.log(newEventObject);
+          newStateEventsArray.push(newEventObject);
+          console.log(newEventObject.end instanceof Date);
         })
-
-
-
         let usersArray = response.data.users;
         console.log("usserArray")
         console.log(usersArray)
@@ -72,35 +70,53 @@ class Group extends Component {
         this.setState({
           events: newStateEventsArray,
           users: usersArray
-        })
-
-      })
+        });
+      });
   }
 
+  // function to show the create event form
   showEventForm(){
     this.setState({
       createEvent: true
     });
   }
 
+  // function to hide the create event form
   hideEventForm = () => {
     this.setState({
       createEvent: false
     });
   }
 
+  // function to show the add user form
   showAddUserForm(){
     this.setState({
       addUser: true
     });
   }
 
+  // function to hide the add user form
   hideAddUserForm = () => {
     this.setState({
       addUser: false
     });
   }
 
+  // function to show the update event form
+  showUpdateEventForm(){
+    this.setState({
+      updateEvent: true
+    });
+  }
+
+  // function to hide the update event form
+  hideUpdateEventForm = () => {
+    this.setState({
+      updateEvent: false
+    });
+  }
+
+  // function to update the users so that the page will re render when a user is added to the group
   refreshUsers (groupResponse) {
     console.log(groupResponse);
     this.setState({
@@ -110,9 +126,8 @@ class Group extends Component {
     console.log(this.state.users);
   }
 
-
+  // function to pull events onto the calendar based on the current group to re render
   getEvents() {
-
     console.log("Made it to getEvents");
     helpers.getEvents(this.props.match.params.id)
       .then(response => {
@@ -140,24 +155,25 @@ class Group extends Component {
           console.log(newEventObject)
 
           newStateArray.push(newEventObject)
-
-        // debugger
-        console.log(newEventObject.end instanceof Date)
+          console.log(newEventObject.end instanceof Date)
         })
-
-        console.log("newStateArray")
-        console.log(newStateArray)
-        console.log(eventsArray)
-        this.setState({
-          events: newStateArray
-        })
-
-      })
-
-
-
+          console.log("newStateArray")
+          console.log(newStateArray)
+          console.log(eventsArray)
+          this.setState({
+            events: newStateArray
+          });
+      });
   } //ends getEvents
 
+  // function to change the state of the current event index
+  currentIndex (index) {
+    this.setState({
+      currentIndex: index
+    });
+  }
+
+// render function
 	render(){
     // console.log(this.props.match.params.id);
     let eventForm = null;
@@ -168,13 +184,18 @@ class Group extends Component {
     if(this.state.addUser == true) {
       addUserForm = <AddUser hideAddUserForm={this.hideAddUserForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshUsers={this.refreshUsers} />
     }
+    let updateEventForm = null;
+    if(this.state.updateEvent == true) {
+      updateEventForm = <UpdateEvent currentIndex={this.state.currentIndex} hideUpdateEventForm={this.hideUpdateEventForm} userID={this.props.userID} currentGroup={this.props.match.params.id} refreshEvent={this.getEvents} events={this.state.events}/>
+    }
+
 		return(
       <div className="main" id="mainCal">
         <div className="row" id="navBarRow">
           <nav className="navbar navbar-inverse">
             <div className="container-fluid">
               <div className="navbar-header">
-                <a className="navbar-brand" id="logo" href="#dashboard">glimpse</a>
+                <a className="navbar-brand" id="logo" href="/">glimpse</a>
               </div>
               <div className="collapse navbar-collapse" id="myNavbar">
                 <ul className="nav navbar-nav">
@@ -203,6 +224,8 @@ class Group extends Component {
         </div>
           <createAddUserForm addUser={this.state.addUser} />
            {addUserForm}
+          <createUpdateEventForm updateEvent={this.state.updateEvent} />
+           {updateEventForm} 
         
 
         <div className="row">
@@ -226,6 +249,15 @@ class Group extends Component {
                 </div>
                 <div className="col-sm-2 sidenav">
                   <button type="button" className="btn btn-hero" onClick={this.showEventForm}>add a new event</button>
+                  {this.state.events.map((event, index) => {
+                  
+                  return(
+                     <a onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
+                        <p key={index}>
+                          {event.title}
+                          {/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
+                        </p>
+                    </a>);})}
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@ import './createEvent_addUser.css';
 import { Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
-class CreateEvent extends Component {
+class UpdateEvent extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -17,6 +17,16 @@ class CreateEvent extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+	componentDidMount () {
+		
+		this.setState({
+			title: this.props.events[this.props.currentIndex].title,
+			start: this.props.events[this.props.currentIndex].start,
+			end: this.props.events[this.props.currentIndex].end,
+			desc: this.props.events[this.props.currentIndex].desc
+		});
+	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
@@ -24,24 +34,27 @@ class CreateEvent extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault()
-		axios
-			.post('/group/event', {
-				event: {
+		event.preventDefault();
+		let updatedArray = this.props.events;
+		updatedArray[this.props.currentIndex] = {
 					title: this.state.title,
 					start: this.state.start,
 					end: this.state.end,
 					desc: this.state.desc
-				},
-				id: this.props.currentGroup
+		}
+		console.log("updated array");
+		console.log(updatedArray);
+		axios
+			.post('/group/updateEvent', {
+				groupID: this.props.currentGroup,
+				updatedArray: updatedArray
 			})
 			.then(response => {
 				console.log("response after handle submit");
 				console.log(response);
-				// console.log("response id: " + response.data._id);
 				if (!response.data.errmsg) {
 					console.log('event added');
-					this.props.hideEventForm();
+					this.props.hideUpdateEventForm();
 					this.props.refreshEvent();
 				} else {
 					console.log('duplicate');
@@ -51,11 +64,11 @@ class CreateEvent extends Component {
 	render(){
 		return(
 			<div className="row" id="createEventRow">
-				<div className="col-lg-1"></div>
-				<div className="col-lg-10">
+				<div className="col-lg-2"></div>
+				<div className="col-lg-8">
 					<div className="panel panel-default">
 	  				<div className="panel-heading" id="createEventHeading">
-	   					<h4 className="panel-title text-center" id="createEventTitle">add an event</h4>
+	   					<h4 className="panel-title text-center" id="createEventTitle">update an event</h4>
 	  				</div>
 		  			<div className="panel-body" id="createEventPanel">
 		     			<form className="form-inline text-center">
@@ -79,14 +92,14 @@ class CreateEvent extends Component {
 								<textarea type="text" name="desc" value={this.state.desc} onChange={this.handleChange}/>
 					    	</div>
 		    			</form>
-				    <button type="button" className="btn btn btn-primary actionButton center-block" id="createEventButton" onClick={this.handleSubmit}>create event</button>
+				    <button type="button" className="btn btn btn-primary actionButton center-block" id="createEventButton" onClick={this.handleSubmit}>update event</button>
 		  	</div>
 			</div>
 			</div>
-			<div className="col-lg-1"></div>
+			<div className="col-lg-2"></div>
 			</div>
 		)
 	}
 }
 
-export default CreateEvent;
+export default UpdateEvent;
