@@ -81,12 +81,12 @@ return (
 				{this.props.groups.map((group, index) => {
 					let route = `/group/${group._id}`;
 					return(
-					<div className="col-sm-2">
+					<div className="row">
 						<Link to={route}>
 							<div className="panel panel-default" id="groupNameBox">
-								<div className="panel-body" key={index}>
-									{group.groupName}<br /> <br />
-                  <i>{group.groupDescription}</i>
+								<div className="panel-body panel-fixed" key={index}>
+									<p><h4>{group.groupName}</h4><br />
+                  					<i>{group.groupDescription}</i></p>
 									{/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
 								</div>
 							</div>
