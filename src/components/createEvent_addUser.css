@@ -1,0 +1,41 @@
+#createEventPanel, #addUserPanel{
+	background-color: white;
+	max-height: auto;
+	align-content: center;
+	padding-left: 10px;
+	padding-right:10px;
+}
+
+#createEventTitle, #addUserTitle{
+	font-family: 'Just Another Hand', cursive;
+	font-size: 34px;
+}
+
+#createEventButton, #addUserButton, #updateEventButton{
+  color: #f5f5f5;
+  background-color: #01ABAA;
+  border-color: #1abc9c;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+#addUserButton{
+	margin-top: 10px;
+
+}
+
+.createEventText, .addUserText{
+    padding-left: 10px !important;
+}
+
+#createEventHeading, #addUserHeading{
+  background-color: #01abaa;
+}
+
+textarea {
+	line-height: 10px;
+}
+
+#updateEventButton, #createEventButton{
+	margin-top: 10px;
+}
+
