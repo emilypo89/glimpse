@@ -40,6 +40,15 @@ body{
   background-color: #01abaa;
 }
 
+@media screen and (min-width: 1199) {
+  .panel{
+    vertical-align: middle;
+    position: fixed;
+    top: 25%;
+  }
+  
+}
+
 
 
 
