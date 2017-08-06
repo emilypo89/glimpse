@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import './dashboard.css';
 import { Route, Link} from 'react-router-dom';
 import CreateGroup from './createGroup.js';
+import axios from 'axios';
 // import Calendar from './containers/calendar.js';
 class Dashboard extends Component {
 	constructor(){
 		super();
 		this.state = {
-			createGroup: false
+			createGroup: false,
+			groupToDelete: ""
 		};
 		this.showForm = this.showForm.bind(this);
+		this.groupToDelete = this.groupToDelete.bind(this);
 	}
 
 	showForm(){
@@ -21,6 +24,54 @@ class Dashboard extends Component {
 	hideForm = () => {
 		this.setState({
 			createGroup: false
+		});
+	}
+
+	groupToDelete (group) {
+		this.setState({
+			groupToDelete: group
+		}, this.deleteGroupFromUsers);	
+	}
+
+
+
+	deleteGroupFromUsers (event) {
+		// event.preventDefault();
+		console.log("this.props.groups");
+		console.log(this.props.groups);
+		const groupIDToDelete = this.props.groups[this.state.groupToDelete]._id;
+		console.log("group id to delete: " + groupIDToDelete);
+		
+		let groupsArray = this.props.groups;
+		groupsArray.splice(this.state.groupToDelete, 1);
+		axios.post("/auth/deleteGroup", {
+			userID: this.props.userID,
+			groupsArray: groupsArray
+		}).then(response => {
+			console.log("response from delete group from user axios request");
+			console.log(response);
+			if (!response.data.errmsg) {
+				console.log('group deleted');
+				this.props.refreshGroup(response.data.groups);
+				this.deleteUserfromGroups(groupIDToDelete, this.props.userID);
+			} else {
+				console.log('duplicate');
+			}
+		});
+	}
+
+	deleteUserfromGroups (groupID, userID) {
+		axios.post("group/deleteUser", {
+			groupID: groupID,
+			userID: userID
+		}).then(response => {
+			console.log("response from delete user from group axios request");
+			console.log(response);
+			if (!response.data.errmsg) {
+				console.log('user deleted');
+			} else {
+				console.log('duplicate');
+			}
 		});
 	}
 
@@ -82,16 +133,18 @@ return (
 					let route = `/group/${group._id}`;
 					return(
 					<div className="row">
-						<Link to={route}>
-							<div className="panel panel-default" id="groupNameBox">
+					 <div className="col-sm-2">
+						<div className="panel panel-default" id="groupNameBox">
+							<Link to={route}>
 								<div className="panel-body panel-fixed" key={index}>
-									<p><h4>{group.groupName}</h4><br />
-                  					<i>{group.groupDescription}</i></p>
-									{/*<button key={index} onClick={this.props.selectGroup(group._id)}>{group.groupName}</button>*/}
+									<p><h4>{group.groupName}</h4> <br />
+                  <i>{group.groupDescription}</i></p>
 								</div>
-							</div>
-						</Link>
-					</div>);})}
+							</Link>
+							<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
+						</div>
+					</div>
+          </div>);})}
 				</div>
 			</div>
 
