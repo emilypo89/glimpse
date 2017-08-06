@@ -133,7 +133,6 @@ return (
 					let route = `/group/${group._id}`;
 					return(
 					<div className="row">
-					 <div className="col-sm-2">
 						<div className="panel panel-default" id="groupNameBox">
 							<Link to={route}>
 								<div className="panel-body panel-fixed" key={index}>
@@ -143,7 +142,6 @@ return (
 							</Link>
 							<button onClick={(group) => {this.groupToDelete(index);}}>delete group</button>
 						</div>
-					</div>
           </div>);})}
 				</div>
 			</div>
