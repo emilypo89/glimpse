@@ -113,7 +113,24 @@ router.post('/api/user', (req, res) => {
 			res.json({ groups: doc[0].groups });
 		}
 	})
+});
 
+router.post("/deleteGroup", function(req, res) {
+	console.log("made it to delete group route");
+	console.log(req.body);
+	User.findOneAndUpdate({_id: req.body.userID},
+	{
+		$set: {groups: req.body.groupsArray}
+	}, {new: true}).populate("groups").exec(function(err, doc) {
+		if (err) {
+			console.log(err)
+		}
+		else{
+			console.log("delete group route");
+			console.log(doc);
+			res.send(doc);
+		}
+	});
 });
 
 
