@@ -61,22 +61,22 @@ class CreateEvent extends Component {
 		  			<div className="panel-body" id="createEventPanel">
 		     			<form className="form-inline text-center">
 							<div className="form-group text-center createEventText">
-								<label for="title">event name:</label> <br />
+								<label htmlFor="title">event name:</label> <br />
 								<input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
 		    				</div>
 					
 							<div className="form-group text-center createEventText">
-								<label for="start">event begins (July 22, 2017 5:00 pm):</label> <br />
+								<label htmlFor="start">event begins (July 22, 2017 5:00 pm):</label> <br />
 								<input type="text" name="start" value={this.state.start} onChange={this.handleChange} />
 			    			</div>
 
 			    			<div className="form-group text-center createEventText">
-								<label for="end">end of event (July 22, 2017 9:00 pm):</label> <br />
+								<label htmlFor="end">end of event (July 22, 2017 9:00 pm):</label> <br />
 								<input type="text" name="end" value={this.state.end} onChange={this.handleChange} />
 			    			</div>
 
 			    			<div className="form-group text-center createEventText">
-								<label for="desc">description:</label> <br />
+								<label htmlFor="desc">description:</label> <br />
 								<input type="text" name="desc" value={this.state.desc} onChange={this.handleChange}/>
 					    	</div>
 		    			</form>

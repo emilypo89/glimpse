@@ -19,6 +19,10 @@
     color: black !important;
 }
 
+#eventUpdate {
+  cursor: pointer;
+}
+
 body {
     margin: 0;
     padding: 0;

@@ -204,14 +204,6 @@ class Group extends Component {
                   
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                  <li>
-                    <form className="navbar-form pull-right">
-                      <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Search for a Group" />
-                      </div>
-                      <button type="submit" className="btn btn-default">Find</button>
-                    </form>
-                  </li>
                   <li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span>  Logout</button></li>
                 </ul>
               </div>
@@ -254,8 +246,8 @@ class Group extends Component {
                   {this.state.events.map((event, index) => {
                   
                   return(
-                     <a onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
-                        <p className="sideNavP" key={index}>
+                     <a key={index} onClick={(event) => {this.currentIndex(index); this.showUpdateEventForm();}}>
+                        <p className="sideNavP" id="eventUpdate" key={index}>
                           {event.title}
                         </p>
                     </a>);})}

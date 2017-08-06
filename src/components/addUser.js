@@ -65,7 +65,7 @@ class AddUser extends Component {
 			  		<div className="panel-body" id="addUserPanel">
 		     			<form className="form-inline text-center">
 							<div className="form-group text-center addUserText">
-								<label for="email">new user's email:</label>
+								<label htmlFor="email">new user's email:</label>
 								<input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
 		    				</div>
 		    			</form>

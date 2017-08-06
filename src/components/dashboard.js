@@ -98,15 +98,8 @@ return (
 						<li><button className="btn btn-primary" id="groupButton" onClick={this.showForm}>Create a Group</button></li>
 					</ul>
 					<ul className="nav navbar-nav navbar-right">
-						<li>
-							<form className="navbar-form pull-right">
-								<div className="form-group">
-									<input type="text" className="form-control" placeholder="Search for a Group" />
-								</div>
-								<button type="submit" className="btn btn-default">Find</button>
-							</form></li>
-							<li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
-						</ul>
+						<li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
+					</ul>
 					</div>
 				</div>
 			</nav>
