@@ -88,7 +88,7 @@ class CreateGroup extends Component {
 					
 							<div className="form-group text-center groupText">
 								<label htmlFor="groupDescription">description:</label><br />
-								<textarea type="text" name="groupDescription" value={this.state.groupDescription} onChange={this.handleChange}/>
+								<input type="text" name="groupDescription" value={this.state.groupDescription} onChange={this.handleChange}/>
 				    		</div>
 		    			</form>
 				    <button type="button" className="btn btn-primary actionButton center-block" id="createGroupButton" onClick={this.handleSubmit}>create group</button>
