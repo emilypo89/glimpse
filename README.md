@@ -7,10 +7,8 @@ glimpse is a snapshot of the days, weeks, and months ahead and let's users see w
 
 ## Use of Application
 
-Loading the application brings you immediately to our Landing Page which gives you a taste of what glimse has to offer and allows you to login or sign up!
-![landing Page](./public/images/glimpse1.jpg)
-![landing Page 2](./public/images/glimpse2.jpg)
-![landing Page 3](./public/images/glimpse3.jpg)
+Loading the application brings you immediately to our Landing Page which gives you a taste of what glimpse has to offer and allows you to login or sign up!
+![landing Page](./public/images/fullGlimpse.png)
 
 Sign up with a few simple bits of information to get started.
 ![sign up page](./public/images/glimpse4.jpg)
