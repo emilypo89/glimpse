@@ -22,7 +22,8 @@ class Group extends Component {
       updateEvent: false,
       events: [],
       users: [],
-      currentIndex: ""
+      currentIndex: "",
+      groupName: ""
     }
     this.showEventForm = this.showEventForm.bind(this);
     this.getEvents = this.getEvents.bind(this);
@@ -69,7 +70,8 @@ class Group extends Component {
         console.log(eventsArray)
         this.setState({
           events: newStateEventsArray,
-          users: usersArray
+          users: usersArray,
+          groupName: response.data.groupName
         });
       });
   }
@@ -222,7 +224,9 @@ class Group extends Component {
           <createUpdateEventForm />
            {updateEventForm} 
         
-
+        <div className="row text-center">
+          <h2 id="groupName">{this.state.groupName}</h2>
+        </div>     
         <div className="row">
           <div className="container" id="calContainer">    
             <div className="container-fluid text-center">    

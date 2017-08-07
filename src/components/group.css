@@ -2,6 +2,12 @@
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {height: 450px}
 
+ #groupName{
+  font-size: 50px;
+  color: white;
+  font-family: 'Just Another Hand', cursive;
+} 
+
 /* Set gray background color and 100% height */
 .sidenav {
   padding-top: 20px;
