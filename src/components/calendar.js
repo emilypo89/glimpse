@@ -1,6 +1,7 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import './calendar.css';
 
 BigCalendar.momentLocalizer(moment);
 
