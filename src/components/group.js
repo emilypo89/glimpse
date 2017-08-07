@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './group.css';
 import Calendar from './calendar';
 import CreateEvent from './createEvent';
@@ -204,7 +205,7 @@ class Group extends Component {
                   
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
-                  <li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><span className="glyphicon glyphicon-log-in"></span>  Logout</button></li>
+                  <li><button className="btn btn-primary" id="logOutButton" onClick={this.props._logout}><Link to="/" id="logOutButton"><span className="glyphicon glyphicon-log-in"></span>  Logout</Link></button></li>
                 </ul>
               </div>
             </div>
