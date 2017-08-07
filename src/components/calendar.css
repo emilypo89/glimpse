@@ -44,11 +44,12 @@ button.rbc-input::-moz-focus-inner {
 .rbc-ellipsis,
 .rbc-event-label,
 .rbc-row-segment .rbc-event-content,
-.rbc-show-more {
+.rbc-show-more, .rbc-show-more:hover {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: black;
 }
 .rbc-rtl {
   direction: rtl;
